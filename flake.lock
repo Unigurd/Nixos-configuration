@@ -1,0 +1,64 @@
+{
+  "nodes": {
+    "bash-utils": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1706029481,
+        "narHash": "sha256-rGqmmz0U7QooRPK0yeAOgU/FANd2YE/oBsQacUCsc9E=",
+        "owner": "Unigurd",
+        "repo": "bash-utils",
+        "rev": "d322bb687d8795be6b9d04af92f9b9fe1904b9a7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Unigurd",
+        "repo": "bash-utils",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1705312285,
+        "narHash": "sha256-rd+dY+v61Y8w3u9bukO/hB55Xl4wXv4/yC8rCGVnK5U=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "bee2202bec57e521e3bd8acd526884b9767d7fa0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1706035044,
+        "narHash": "sha256-Mjk20bVbCc0GyjHNXeWHgx7vvLnak7tyV9fEs9iWpo0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "edcff388a08f24b62dd09a27e86eb0c4313eb798",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "bash-utils": "bash-utils",
+        "nixos-hardware": "nixos-hardware",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
