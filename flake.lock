@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706029481,
-        "narHash": "sha256-rGqmmz0U7QooRPK0yeAOgU/FANd2YE/oBsQacUCsc9E=",
+        "lastModified": 1706391071,
+        "narHash": "sha256-M+hTsaDW2cI5S0Fkn3gg6JUJuz6sVJTSM9Cg8CP0g1A=",
         "owner": "Unigurd",
         "repo": "bash-utils",
-        "rev": "d322bb687d8795be6b9d04af92f9b9fe1904b9a7",
+        "rev": "a6eecb82ae37468875411d8545cd3fb1024441fe",
         "type": "github"
       },
       "original": {
