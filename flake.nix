@@ -12,7 +12,7 @@
 
   outputs = inputs@{self, nixpkgs, nixos-hardware, bash-utils}: {
     nixosConfigurations = {
-      "nixos" = nixpkgs.lib.nixosSystem {
+      "gurd-personal" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
