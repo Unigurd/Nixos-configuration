@@ -16,7 +16,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          ./configuration.nix
+          ./gurd-personal/configuration.nix
           # ./hardware-configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t480s
         ];
