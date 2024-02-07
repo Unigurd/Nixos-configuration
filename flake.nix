@@ -17,10 +17,18 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./gurd-personal/configuration.nix
-          # ./hardware-configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t480s
         ];
       };
+
+      "gurd-server" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./gurd-server/configuration.nix
+        ];
+      };
+
     };
   };
 }
