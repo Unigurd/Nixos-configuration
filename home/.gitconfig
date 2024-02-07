@@ -1,0 +1,14 @@
+[user]
+	email = Sigurddam@hotmail.com
+	name = Sigurd Dam Sonniks
+
+[core]
+  editor = vi
+
+[alias]
+  s  = status --short
+  st = status
+  ci = commit
+  br = branch
+  l  = log --oneline -n 10
+  g  = log --graph --oneline

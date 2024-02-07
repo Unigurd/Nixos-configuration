@@ -1,0 +1,18 @@
+Xft.dpi: 120
+
+! To make right alt work normally in xterm
+xterm*metaSendsEscape: true
+
+xterm.vt100.backarrowKey: false
+xterm.ttyModes: erase ^?
+
+xterm*Background: Black
+xterm*Foreground: yellow
+xterm*cursorColor: lightGrey
+
+xft.dpi: 96
+
+Xterm*selectToClipboard: true
+*VT100*translations: #override \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
