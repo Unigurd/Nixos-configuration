@@ -11,7 +11,11 @@
     };
   };
 
-  outputs = inputs@{self, nixpkgs, nixos-hardware, home-manager, bash-utils}: {
+  outputs = inputs@{self, nixpkgs, nixos-hardware, home-manager, bash-utils}:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
     nixosConfigurations = {
       "gurd-personal" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -23,7 +27,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.gurd = import ./home.nix;
+            home-manager.users.gurd = import ./gurd-personal/home.nix;
           }
         ];
       };
@@ -37,5 +41,9 @@
       };
 
     };
-  };
-}
+    homeConfigurations."gurd" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [ gurd-server/home.nix ];
+      };
+    };
+  }
