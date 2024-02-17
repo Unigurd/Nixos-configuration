@@ -96,7 +96,10 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+  };
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
