@@ -104,7 +104,10 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
-
+  # Have pulseaudio.service itself start at boot but after bluetooth
+  # so bluetooth accepts sound connections from the start.
+  systemd.user.services.pulseaudio.after = ["bluetooth.service"];
+  systemd.user.targets.default.wants = ["pulseaudio.service"];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gurd = {
