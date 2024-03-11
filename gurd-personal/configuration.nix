@@ -48,9 +48,9 @@
   services.xserver = {
     enable = true;
 
-    layout = "us,dk";
 
-    xkbOptions = "grp:win_space_toggle";
+    xkb.options = "grp:win_space_toggle";
+    xkb.layout = "us,dk";
 
     desktopManager = {
     xterm.enable = false;
@@ -86,8 +86,8 @@
 
   virtualisation.docker.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableHardening = false;
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableHardening = false;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
   users.extraGroups.vboxusers.members = [ "gurd" ];
 
