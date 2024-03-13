@@ -48,7 +48,6 @@
   services.xserver = {
     enable = true;
 
-
     xkb.options = "grp:win_space_toggle";
     xkb.layout = "us,dk";
 
@@ -68,19 +67,18 @@
         i3lock # screen lock
       ];
     };
+
+    extraConfig = ''
+    Section "Monitor"
+      Identifier "eDP-1
+    EndSection
+
+    Section "Monitor"
+      Identifier "HDMI-2"
+      Option "Above" "eDP-1"
+    EndSection
+'';
   };
-
-  # services.xserver.enable = true;
-  # services.xserver.windowManager.i3.enable = true;
-  # services.xserver.displayManager.sddm.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us1";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
-
 
   nixpkgs.config.allowUnfree = true;
 
