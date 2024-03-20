@@ -86,11 +86,6 @@
 
   virtualisation.docker.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableHardening = false;
-  # virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "gurd" ];
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
