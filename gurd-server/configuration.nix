@@ -48,9 +48,9 @@
   services.xserver = {
     enable = true;
 
-    layout = "us,dk";
 
-    xkbOptions = "grp:win_space_toggle";
+    xkb.options = "grp:win_space_toggle";
+    xkb.layout = "us,dk";
 
     desktopManager = {
     xterm.enable = false;
@@ -161,11 +161,6 @@
   networking.firewall.allowedUDPPorts = [ 53 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
