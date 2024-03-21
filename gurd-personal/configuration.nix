@@ -1,11 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, inputs, ...}:
-
-{
-
+{ config, pkgs, lib, inputs, ...}: {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   imports = [./hardware-configuration.nix];
@@ -71,7 +64,6 @@
     xkb.options = "grp:win_space_toggle";
     xkb.layout = "us,dk";
     libinput.enable = true; # Enable touchpad support (enabled default in most desktop managers)
-    desktopManager.xterm.enable = false;
     displayManager.defaultSession = "none+i3";
     windowManager.i3 = {
       enable = true;
