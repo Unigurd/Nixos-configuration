@@ -123,6 +123,9 @@
         inputs.bash-utils.packages."${pkgs.system}".label
         inputs.bash-utils.packages."${pkgs.system}".note
       ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5BXPPjBBmXO5EMK5t4Vo24b77Kv0zcYYXFDdb2PM35 Sigurddam@hotmail.com"
+    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -151,7 +154,11 @@
   };
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+  };
 
   # Enable AdGuard Home
   services.adguardhome.enable = true;
