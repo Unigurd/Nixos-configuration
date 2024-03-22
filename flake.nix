@@ -38,6 +38,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./gurd-server/configuration.nix
+          ./gurd-server/hardware-configuration.nix
         ];
       };
 
