@@ -22,6 +22,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./gurd-personal/configuration.nix
+          ./gurd-personal/hardware-configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t480s
           home-manager.nixosModules.home-manager
           {
