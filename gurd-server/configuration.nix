@@ -67,14 +67,22 @@
     enable = true;
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
+    settings.X11Forwarding = true;
   };
 
   # Enable AdGuard Home
-  services.adguardhome.enable = true;
+  services.adguardhome = {
+    enable = true;
+    # Could be fun but requires configuration I can't be bothered to do
+    # mutableSettings = false;
+    settings.users = [
+      { name = "Unigurd"; password = "$2y$10$zF9iCCc3Tge7J0FoNusnbe22qS/WAVU9FMDCZhQz.tdyN39tsdpGe";}
+    ];
+  };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ 53 ];
+  networking.firewall.allowedTCPPorts = [ 22 ];  # SSH -- OpenSSH
+  networking.firewall.allowedUDPPorts = [ 53 ];  # DNS -- Adguard Home
 
 
 
