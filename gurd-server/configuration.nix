@@ -26,7 +26,7 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    vim wget tmux git keepassxc pkgs.man-pages pkgs.man-pages-posix
+    vim dig wget tmux git keepassxc pkgs.man-pages pkgs.man-pages-posix
   ];
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
