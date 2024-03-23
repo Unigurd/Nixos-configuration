@@ -23,7 +23,7 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    vim wget emacs tmux guile_3_0 git keepassxc pkgs.man-pages pkgs.man-pages-posix];
+    vim dig wget emacs tmux guile_3_0 git keepassxc pkgs.man-pages pkgs.man-pages-posix];
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
   documentation.dev.enable = true;
