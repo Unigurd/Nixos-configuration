@@ -80,6 +80,8 @@
     ];
   };
 
+  services.logind.lidSwitch = "ignore";
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];  # SSH -- OpenSSH
   networking.firewall.allowedUDPPorts = [ 53 ];  # DNS -- Adguard Home
