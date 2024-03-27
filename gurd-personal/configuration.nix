@@ -23,7 +23,13 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    vim dig wget emacs tmux guile_3_0 git keepassxc pkgs.man-pages pkgs.man-pages-posix];
+    vim emacs
+    dig wget
+    tmux
+    git
+    keepassxc xclip  # xclip is needed for keepassxc-cli to be able to copy to clipboard
+    pkgs.man-pages pkgs.man-pages-posix
+  ];
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
   documentation.dev.enable = true;
