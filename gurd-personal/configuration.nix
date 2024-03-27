@@ -60,6 +60,10 @@
   # Enable CUPS to print documents
   services.printing.enable = true;
 
+  # Source ~/.bashrc from login shells
+  # Check that the shell is bash and that it is interactive.
+  # $- is current shell options
+  programs.bash.loginShellInit = ''[[ -n "$BASH" ]] && [[ "$-" == *i* ]] && . ~/.bashrc'';
 
 
 
