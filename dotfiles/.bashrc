@@ -1,3 +1,7 @@
+# Bash will source this file when run over ssh
+# even if it non-interactive. Prevent this.
+[[ "$-" != *i* ]] && return
+
 EDITOR=vi
 
 alias g=git

@@ -86,6 +86,10 @@
   networking.firewall.allowedTCPPorts = [ 22 ];  # SSH -- OpenSSH
   networking.firewall.allowedUDPPorts = [ 53 ];  # DNS -- Adguard Home
 
+  # Source ~/.bashrc from login shells
+  # Check that the shell is bash and that it is interactive.
+  # $- is current shell options
+  programs.bash.loginShellInit = ''[[ -n "$BASH" ]] && [[ "$-" == *i* ]] && . ~/.bashrc'';
 
 
 
