@@ -17,6 +17,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
     nixosConfigurations = {
+
       "gurd-personal" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
@@ -29,7 +30,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.gurd = import ./gurd-personal/home.nix;
-
             # To pass inputs on to home.nix
             home-manager.extraSpecialArgs = {inherit inputs;};
           }
@@ -44,11 +44,13 @@
           ./gurd-server/hardware-configuration.nix
         ];
       };
-
     };
+
+    # For gurd-server
     homeConfigurations."gurd" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [ gurd-server/home.nix ];
+      extraSpecialArgs = { inherit inputs; };
       };
     };
   }

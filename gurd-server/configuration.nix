@@ -8,14 +8,6 @@
     initialPassword = "sabre";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs;
-      [
-        firefox
-        evince
-        texlive.combined.scheme-full
-        inputs.bash-utils.packages."${pkgs.system}".label
-        inputs.bash-utils.packages."${pkgs.system}".note
-      ];
     openssh.authorizedKeys.keys = [  # To ssh in from gurd-personal
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5BXPPjBBmXO5EMK5t4Vo24b77Kv0zcYYXFDdb2PM35 Sigurddam@hotmail.com"
     ];

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -10,6 +10,20 @@
   home.file.".Xresources".source = ../dotfiles/.Xresources;
   home.file.".bashrc".source = ../dotfiles/.bashrc;
   home.file.".config/i3/config".source = ../dotfiles/.config/i3/config;
+
+  home.packages = with pkgs; [
+    texlive.combined.scheme-full
+    inputs.bash-utils.packages."${pkgs.system}".label
+    inputs.bash-utils.packages."${pkgs.system}".note
+  ];
+
+
+
+
+
+
+
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with.
