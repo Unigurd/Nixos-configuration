@@ -6,6 +6,8 @@
   home.username = "gurd";
   home.homeDirectory = "/home/gurd";
 
+  imports = [ ../lib/git-sync.nix ];
+
   home.file.".gitconfig".source = ../dotfiles/.gitconfig;
   home.file.".Xresources".source = ../dotfiles/.Xresources;
   home.file.".bashrc".source = ../dotfiles/.bashrc;
@@ -17,6 +19,12 @@
     inputs.bash-utils.packages."${pkgs.system}".note
   ];
 
+  gurd.git-sync.keepassxc = {
+    enable = true;
+    dir       = "keepassxc";
+    interval  = "1m";
+    cloneFrom = "git@github.com:Unigurd/keepassxc";
+  };
 
 
 
