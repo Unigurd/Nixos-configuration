@@ -6,5 +6,20 @@
   home.file.".config/i3/config".source = ../dotfiles/.config/i3/config;
   home.file.".bashrc".source = ../dotfiles/.bashrc;
 
+  home.packages = with pkgs; [
+    firefox
+    evince
+    texlive.combined.scheme-full
+    inputs.bash-utils.packages."${pkgs.system}".label
+    inputs.bash-utils.packages."${pkgs.system}".note
+  ];
+
+
+
+
+
+
+
+
   home.stateVersion = "23.11";
 }

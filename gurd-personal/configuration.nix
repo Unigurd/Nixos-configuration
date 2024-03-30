@@ -8,14 +8,6 @@
     initialPassword = "sabre";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs;
-      [
-        firefox
-        evince
-        texlive.combined.scheme-full
-        inputs.bash-utils.packages."${pkgs.system}".label
-        inputs.bash-utils.packages."${pkgs.system}".note
-      ];
   };
 
   # Enable the X11 windowing system with i3
