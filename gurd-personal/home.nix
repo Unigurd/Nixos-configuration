@@ -5,10 +5,11 @@
   imports = [ ../lib/git-sync.nix ];
 
   home.file = {
+    ".bashrc".source = ../dotfiles/.bashrc;
     ".gitconfig".source = ../dotfiles/.gitconfig;
     ".Xresources".source = ../dotfiles/.Xresources;
     ".config/i3/config".source = ../dotfiles/.config/i3/config;
-    ".bashrc".source = ../dotfiles/.bashrc;
+    ".config/tmux/tmux.conf".source = ../dotfiles/.config/tmux/tmux.conf;
   };
 
   home.packages = with pkgs; [
