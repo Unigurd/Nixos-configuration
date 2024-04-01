@@ -1,23 +1,23 @@
 {pkgs, lib, config, ...}:
-let
+let t = lib.types; a = lib.attrsets;
 
   # I think this is enough to properly escape strings that go into systemd unit files
-  escape      = str: lib.strings.escape [ "\"" "'" "\\" "\n" ] str;
+  escape     = str: lib.strings.escape [ "\"" "'" "\\" "\n" ] str;
 
   syncName   = key: escape "git-sync-${key}";
 
-  syncType = lib.types.submodule {
+  syncType = t.submodule {
     options = {
       enable = lib.mkEnableOption "git-sync timer daemon";
 
       dir = lib.mkOption {
-        type        = lib.types.str;
+        type        = t.str;
         apply       = escape;
         description = "Relative path from users home to git repo.";
       };
 
       timeout = lib.mkOption {
-        type        = lib.types.str;
+        type        = t.str;
         default     = "5s";
         apply       = escape;
         description = ''
@@ -27,7 +27,7 @@ let
       };
 
       cloneFrom = lib.mkOption {
-        type        = lib.types.str;
+        type        = t.str;
         default     = "";
         apply       = escape;
         description = ''
@@ -37,7 +37,7 @@ let
       };
 
       interval = lib.mkOption {
-        type        = lib.types.str;
+        type        = t.str;
         default     = "1h";
         apply       = escape;
         description = ''
@@ -47,9 +47,9 @@ let
       };
 
       accuracy = lib.mkOption {
-        type        = lib.types.str;
-        default     = "1m";
-        apply       = escape;
+        type        = t.nullOr t.str;
+        default     = builtins.null;
+        apply       = a: if builtins.isString a then escape a else a;
         description = ''
           How accurate the timer is. Corresponds to AccuracySec for systemd timers.
           Must be a time span as specified in the systemd.time(7) manual.
@@ -64,7 +64,7 @@ let
         path = "${lib.makeBinPath [pkgs.openssh pkgs.git]}";
         command   = "${./git-sync.sh}";
         cloneMessage = "Specify repository to clone from by setting 'gurd.git-sync.cloneFrom'";
-    in lib.attrsets.nameValuePair name
+    in a.nameValuePair name
       (lib.mkIf cfg.enable {
         Unit.Description = name;
         Service = {
@@ -82,11 +82,11 @@ let
       });
 
   makeTimer = key: cfg:  # key: str, cfg: syncType
-    lib.attrsets.nameValuePair (syncName key) (
+    a.nameValuePair (syncName key) (
       lib.mkIf cfg.enable {
         Install.WantedBy = [ "timers.target" ];
         Timer = {
-          AccuracySec     = cfg.accuracy;
+          AccuracySec     = lib.mkIf (!builtins.isNull cfg.accuracy) cfg.accuracy;
           OnStartupSec    = "0m";
           OnUnitActiveSec = cfg.interval;
         };
@@ -95,15 +95,15 @@ in {
 
   options = {
     gurd.git-sync = lib.mkOption {
-      type = lib.types.attrsOf syncType;
+      type = t.attrsOf syncType;
       default = {};
     };
   };
 
   config = {
     systemd.user = {
-      services = lib.attrsets.mapAttrs' makeService config.gurd.git-sync;
-      timers   = lib.attrsets.mapAttrs' makeTimer config.gurd.git-sync;
+      services = a.mapAttrs' makeService config.gurd.git-sync;
+      timers   = a.mapAttrs' makeTimer config.gurd.git-sync;
     };
   };
 }
