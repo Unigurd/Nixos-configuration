@@ -20,9 +20,8 @@
   ];
 
   gurd.git-sync.keepassxc = {
-    enable = true;
+    enable    = true;
     dir       = "keepassxc";
-    interval  = "1m";
     cloneFrom = "git@github.com:Unigurd/keepassxc";
   };
 
