@@ -20,6 +20,8 @@
     texlive.combined.scheme-full
     inputs.bash-utils.packages."${pkgs.system}".label
     inputs.bash-utils.packages."${pkgs.system}".note
+    jq
+    unzip
   ];
 
   gurd.git-sync.keepassxc = {
