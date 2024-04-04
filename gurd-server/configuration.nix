@@ -5,7 +5,6 @@
 
   # User gurd
   users.users.gurd = {
-    initialPassword = "sabre";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [  # To ssh in from gurd-personal
