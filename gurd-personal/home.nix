@@ -2,7 +2,7 @@
 
 {
 
-  imports = [ ../lib/git-sync.nix ];
+  imports = [ ../lib/git-sync.nix ../lib/firefox.nix];
 
   home.file = {
     ".bashrc".source = ../dotfiles/.bashrc;
@@ -13,7 +13,6 @@
   };
 
   home.packages = with pkgs; [
-    firefox
     evince
     texlive.combined.scheme-full
     inputs.bash-utils.packages."${pkgs.system}".label
