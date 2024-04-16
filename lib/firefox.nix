@@ -4,7 +4,7 @@ let
       name = uuid;
       value = {
         install_url = "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi";
-        installation_mode = "force_installed";
+        installation_mode = "normal_installed";
       };
     };
 
