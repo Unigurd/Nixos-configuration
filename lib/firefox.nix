@@ -7,6 +7,7 @@ let
         installation_mode = "normal_installed";
       };
     };
+  profile_name = "sigurds_profile";
 
 in {
   programs.firefox = {
@@ -21,9 +22,9 @@ in {
     ];
 
     profiles = {
-      profile_0 = {
+      ${profile_name} = {
         id = 0;
-        name = "sigurds_profile";
+        name = profile_name;
         isDefault = true;
       };
     };
