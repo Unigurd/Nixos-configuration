@@ -33,4 +33,7 @@ in {
   home.file.".mozilla/firefox/${profile_name}/user.js".text = ''
     user_pref("layout.css.devPixelsPerPx", "0.8");
   '';
+
+  home.file.".mozilla/firefox/${profile_name}/search.json.mozlz4".source = ./search.json.mozlz4;
 }
+
