@@ -20,6 +20,7 @@
     git
     keepassxc xclip  # xclip is needed for keepassxc-cli to be able to copy to clipboard
     pkgs.man-pages pkgs.man-pages-posix
+    python312Packages.python-lsp-server
   ];
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
