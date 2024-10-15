@@ -4,12 +4,16 @@
   };
 
   config = lib.mkIf config.gurd.i3.enable {
+
+    # Previously services.xserver.displayManager.defaultSession
+    # and services.xserver.libinput.enable. That's why they're here.
+    services.displayManager.defaultSession = "none+i3";
+    services.libinput.enable = true; # Enable touchpad support. enabled default in most desktop managers
+
     services.xserver = {
       enable = true;
       xkb.options = "grp:win_space_toggle";
       xkb.layout = "us,dk";
-      libinput.enable = true; # Enable touchpad support (enabled default in most desktop managers)
-      displayManager.defaultSession = "none+i3";
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
