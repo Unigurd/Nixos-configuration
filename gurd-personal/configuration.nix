@@ -48,7 +48,8 @@
   time.timeZone = "Europe/Copenhagen";
 
   # Enable CUPS to print documents
-  services.printing.enable = true;
+  # Disabled due to recent CUPS vulnerability
+  # services.printing.enable = true;
 
   # Source ~/.bashrc from login shells
   # Check that the shell is bash and that it is interactive.
