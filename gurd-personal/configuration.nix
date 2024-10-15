@@ -6,7 +6,7 @@
   # User gurd
   users.users.gurd = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "adbusers" ]; # Enable ‘sudo’ for the user.
   };
 
   # Enable the X11 windowing system with i3
@@ -55,6 +55,8 @@
   # Check that the shell is bash and that it is interactive.
   # $- is current shell options
   programs.bash.loginShellInit = ''[[ -n "$BASH" ]] && [[ "$-" == *i* ]] && . ~/.bashrc'';
+
+  programs.adb.enable = true;
 
 
 
