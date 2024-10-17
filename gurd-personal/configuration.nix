@@ -41,7 +41,7 @@
         nix-mode font-lock-studio treesit-auto paredit
       ]
     ))
-    vim
+    neovim
     dig wget
     tmux
     git
