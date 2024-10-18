@@ -30,6 +30,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.gurd = import ./gurd-personal/home.nix;
+            home-manager.backupFileExtension = "backup";
             # To pass inputs on to home.nix
             home-manager.extraSpecialArgs = {inherit inputs;};
           }
