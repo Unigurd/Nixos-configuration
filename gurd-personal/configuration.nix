@@ -14,7 +14,7 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    ((emacsPackagesFor emacs).emacsWithPackages (
+    ((emacsPackagesFor emacs30).emacsWithPackages (
       epkgs: with epkgs; [
         # ace
         ace-jump-mode ace-window
