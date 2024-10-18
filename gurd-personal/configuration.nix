@@ -26,7 +26,8 @@
         # completion and stuff
         vertico orderless corfu embark marginalia
         # evil
-        evil evil-paredit
+        # These are not used because evil fails to native-compile
+        # evil evil-paredit
         # Lisp
         geiser geiser-guile slime
         # Git
