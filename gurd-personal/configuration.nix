@@ -50,6 +50,7 @@
     python312Packages.python-lsp-server
     htop
     nil
+    python312
   ];
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
