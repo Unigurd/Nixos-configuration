@@ -56,6 +56,9 @@
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
   documentation.dev.enable = true;
+  # Generate mandb cache. Emacs needs this for the `man` command to generate
+  # suggestions.
+  documentation.man.generateCaches = true;
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
