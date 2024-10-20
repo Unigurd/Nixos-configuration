@@ -45,9 +45,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Copenhagen";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Have pulseaudio.service itself start at boot but after bluetooth
   # so bluetooth accepts sound connections from the start.
   systemd.user.services.pulseaudio.after = ["bluetooth.service"];
