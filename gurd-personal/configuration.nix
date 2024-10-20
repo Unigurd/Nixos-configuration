@@ -52,6 +52,7 @@
     htop
     nil
     python312
+    nodejs  # Needed for the emacs copilot package
   ];
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
