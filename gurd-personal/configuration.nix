@@ -53,7 +53,10 @@
     nil
     python312
     nodejs  # Needed for the emacs copilot package
+    scowl   # Needed to make emacs' icomplete work
   ];
+
+  environment.wordlist.enable = true;
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
   documentation.dev.enable = true;
