@@ -42,6 +42,7 @@
         nix-mode font-lock-studio treesit-auto paredit eglot
       ]
     ))
+
     neovim
     dig wget
     tmux
@@ -54,6 +55,7 @@
     python312
     nodejs  # Needed for the emacs copilot package
     scowl   # Needed to make emacs' icomplete work
+    file    # Needed for emacs' dired-show-file-type
   ];
 
   environment.wordlist.enable = true;
