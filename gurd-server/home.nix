@@ -17,7 +17,6 @@
   };
 
   home.packages = with pkgs; [
-    texlive.combined.scheme-full
     inputs.bash-utils.packages."${pkgs.system}".label
     inputs.bash-utils.packages."${pkgs.system}".note
     jq
