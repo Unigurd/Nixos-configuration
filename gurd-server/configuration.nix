@@ -23,10 +23,6 @@
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
   documentation.dev.enable = true;
 
-  # Enable sound
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # Enable bluetooth
   hardware.bluetooth.enable = true;
 
