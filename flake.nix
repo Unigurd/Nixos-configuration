@@ -48,10 +48,19 @@
     };
 
     # For gurd-server
-    homeConfigurations."gurd" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [ gurd-server/home.nix ];
-      extraSpecialArgs = { inherit inputs; };
+    homeConfigurations =
+      {
+        "gurd" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ gurd-server/home.nix ];
+          extraSpecialArgs = { inherit inputs; };
+        };
+        "sson" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ sson/home.nix ];
+          extraSpecialArgs = { inherit inputs; };
+        };
       };
+    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     };
   }
