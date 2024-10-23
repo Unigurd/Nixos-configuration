@@ -28,5 +28,7 @@ pkgs:
     eros
     # tree-sitter
     treesit-grammars.with-all-grammars treesit-auto
+    # inspector
+    inspector tree-inspector
   ]
 )
