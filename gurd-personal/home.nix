@@ -14,7 +14,7 @@
 
   programs.git = {
     enable = true;
-    userEmail = "sson@baselifescience.com";
+    userEmail = "Sigurddam@hotmail.com";
   };
 
   home.packages = with pkgs; [
