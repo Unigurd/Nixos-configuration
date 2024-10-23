@@ -25,6 +25,7 @@ pkgs:
     # various
     flycheck gcmh auctex arduino-mode ediprolog haskell-mode
     nix-mode font-lock-studio paredit eglot hydra fold-dwim
+    eros
     # tree-sitter
     treesit-grammars.with-all-grammars treesit-auto
   ]
