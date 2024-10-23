@@ -12,7 +12,6 @@
     ".Xresources".source = ../dotfiles/.Xresources;
     ".config/i3/config".source = ../dotfiles/.config/i3/config;
     ".config/tmux/tmux.conf".source = ../dotfiles/.config/tmux/tmux.conf;
-    ".emacs.d/tree-sitter".source ="${pkgs.emacsPackages.treesit-grammars.with-all-grammars}/lib";
   };
 
   programs.git = {
@@ -46,8 +45,9 @@
         vundo undo-fu-session
         # various
         flycheck gcmh auctex arduino-mode ediprolog haskell-mode
-        nix-mode font-lock-studio treesit-auto paredit eglot hydra
-        fold-dwim
+        nix-mode font-lock-studio paredit eglot hydra fold-dwim
+        # tree-sitter
+        treesit-grammars.with-all-grammars treesit-auto
       ]
     ))
 

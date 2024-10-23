@@ -10,7 +10,6 @@
     ".Xresources".source = ../dotfiles/.Xresources;
     ".config/i3/config".source = ../dotfiles/.config/i3/config;
     ".config/tmux/tmux.conf".source = ../dotfiles/.config/tmux/tmux.conf;
-    ".emacs.d/tree-sitter".source ="${pkgs.emacsPackages.treesit-grammars.with-all-grammars}/lib";
   };
 
   programs.git = {
