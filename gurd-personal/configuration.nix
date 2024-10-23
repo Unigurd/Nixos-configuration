@@ -39,7 +39,9 @@
         vundo undo-fu-session
         # various
         flycheck gcmh auctex arduino-mode ediprolog haskell-mode
-        nix-mode font-lock-studio treesit-auto paredit eglot
+        nix-mode font-lock-studio treesit-auto paredit eglot hydra
+        fold-dwim
+
       ]
     ))
 
