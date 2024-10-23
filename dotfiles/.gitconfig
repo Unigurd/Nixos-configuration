@@ -10,5 +10,12 @@
   st = status
   ci = commit
   br = branch
-  l  = log --oneline -n 10
-  g  = log --graph --oneline
+	lg = log --graph --date=format:'%y-%m-%d' --pretty=tformat:'%C(auto)%h %Cgreen%cd%C(auto) %d%s'
+	l  = lg -n 10
+	lm = lg --merges
+
+[merge]
+	conflictStyle = diff3
+
+[pull]
+	ff = only
