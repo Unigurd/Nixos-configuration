@@ -16,6 +16,11 @@
     ".config/tmux/tmux.conf".source = ../dotfiles/.config/tmux/tmux.conf;
   };
 
+  programs.git = {
+    enable = true;
+    userEmail = "sson@baselifescience.com";
+  };
+
   home.packages = with pkgs; [
     inputs.bash-utils.packages."${pkgs.system}".label
     inputs.bash-utils.packages."${pkgs.system}".note

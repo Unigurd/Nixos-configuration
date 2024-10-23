@@ -13,6 +13,11 @@
     ".emacs.d/tree-sitter".source ="${pkgs.emacsPackages.treesit-grammars.with-all-grammars}/lib";
   };
 
+  programs.git = {
+    enable = true;
+    userEmail = "sson@baselifescience.com";
+  };
+
   home.packages = with pkgs; [
     evince
     texlive.combined.scheme-full
