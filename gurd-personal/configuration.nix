@@ -25,6 +25,9 @@
     htop
     nil
     python312
+    nodejs  # Needed for the emacs copilot package
+    scowl   # Needed to make emacs' icomplete work
+    file    # Needed for emacs' dired-show-file-type
   ];
 
   environment.wordlist.enable = true;

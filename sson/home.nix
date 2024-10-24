@@ -21,6 +21,10 @@
 
   home.packages = with pkgs; [
     (import ../lib/emacs.nix pkgs)
+    python312Packages.python-lsp-server
+    nil
+    nodejs  # Needed for the emacs copilot package
+
   ];
 
 
