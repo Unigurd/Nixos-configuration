@@ -24,7 +24,8 @@
     python312Packages.python-lsp-server
     nil
     nodejs  # Needed for the emacs copilot package
-
+    pulseaudio
+    pavucontrol
   ];
 
 
