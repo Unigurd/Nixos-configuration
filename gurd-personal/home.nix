@@ -25,6 +25,7 @@
     inputs.bash-utils.packages."${pkgs.system}".note
     jq
     unzip
+    binutils
   ];
 
   gurd.git-sync.keepassxc = {
