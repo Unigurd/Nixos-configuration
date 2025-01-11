@@ -26,6 +26,7 @@
     jq
     unzip
     binutils
+    pulseaudio
   ];
 
   gurd.git-sync.keepassxc = {
