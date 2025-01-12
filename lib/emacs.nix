@@ -3,11 +3,6 @@ pkgs:
   epkgs: with epkgs; [
     # ace
     ace-jump-mode ace-window
-    # casual
-    # casual-symbol-overlay missing for some
-    # reason. Install from melpa instead.
-    casual-dired casual-info casual-ibuffer
-    casual-isearch casual-re-builder
     # completion and stuff
     vertico orderless corfu embark marginalia
     # evil
@@ -25,7 +20,7 @@ pkgs:
     # various
     flycheck gcmh auctex arduino-mode ediprolog haskell-mode
     nix-mode font-lock-studio paredit eglot hydra fold-dwim
-    eros
+    eros casual
     # tree-sitter
     treesit-grammars.with-all-grammars treesit-auto
     # inspector
