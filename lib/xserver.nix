@@ -26,6 +26,12 @@
       extraConfig = ''
     Section "Monitor"
       Identifier "eDP-1
+      Option "Position" "1600 1440"
+    EndSection
+    Section "Monitor"
+      Identifier "DP-1"
+      Option "PreferredMode" "5120x1440"
+      Option "Position" "0 0"
     EndSection
     Section "Monitor"
       Identifier "HDMI-2"
