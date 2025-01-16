@@ -27,6 +27,7 @@
     unzip
     binutils
     pulseaudio
+    (import ../lib/filewatch.nix pkgs)
   ];
 
   gurd.git-sync.keepassxc = {
