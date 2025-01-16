@@ -30,6 +30,12 @@
     file    # Needed for emacs' dired-show-file-type
   ];
 
+  services.logind.extraConfig =
+    ''
+    IdleAction=ignore
+    IdleActionSec=0
+    '';
+
   environment.wordlist.enable = true;
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
