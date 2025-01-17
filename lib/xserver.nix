@@ -34,6 +34,11 @@
       Option "Position" "0 0"
     EndSection
     Section "Monitor"
+      Identifier "DP-2"
+      Option "PreferredMode" "5120x1440"
+      Option "Position" "0 0"
+    EndSection
+    Section "Monitor"
       Identifier "HDMI-2"
       Option "Above" "eDP-1"
     EndSection
