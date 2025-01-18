@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ...}: {
+{ config, pkgs, lib, inputs, isd, ...}: {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   imports = [../lib/xserver.nix ../lib/i18n.nix];
@@ -29,6 +29,7 @@
     nodejs  # Needed for the emacs copilot package
     scowl   # Needed to make emacs' icomplete work
     file    # Needed for emacs' dired-show-file-type
+    isd.default
   ];
 
   services.logind.extraConfig =

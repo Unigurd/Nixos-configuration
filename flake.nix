@@ -9,18 +9,20 @@
       url = "github:Unigurd/bash-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    isd = {url = "github:isd-project/isd"; inputs.nixpkgs.follows = "nixpkgs";};
   };
 
-  outputs = inputs@{self, nixpkgs, nixos-hardware, home-manager, bash-utils}:
+  outputs = inputs@{self, nixpkgs, nixos-hardware, home-manager, bash-utils, isd}:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      specialArgs = {inherit inputs ; isd = isd.packages.${system};};
     in {
     nixosConfigurations = {
 
       "gurd-personal" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = specialArgs;
         modules = [
           ./gurd-personal/configuration.nix
           ./gurd-personal/hardware-configuration.nix
@@ -32,14 +34,14 @@
             home-manager.users.gurd = import ./gurd-personal/home.nix;
             home-manager.backupFileExtension = "backup";
             # To pass inputs on to home.nix
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = specialArgs;
           }
         ];
       };
 
       "gurd-server" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = specialArgs;
         modules = [
           ./gurd-server/configuration.nix
           ./gurd-server/hardware-configuration.nix
@@ -53,12 +55,12 @@
         "gurd" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ gurd-server/home.nix ];
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = specialArgs;
         };
         "sson" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ sson/home.nix ];
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = specialArgs;
         };
       };
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
