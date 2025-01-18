@@ -22,6 +22,7 @@
     keepassxc xclip  # xclip is needed for keepassxc-cli to be able to copy to clipboard
     man-pages man-pages-posix
     python312Packages.python-lsp-server
+    python312Packages.ruff
     htop
     nil
     python312
