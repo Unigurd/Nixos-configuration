@@ -1,14 +1,13 @@
 let
   # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265/17
   extension = shortId: uuid: {
-      name = uuid;
-      value = {
-        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi";
-        installation_mode = "normal_installed";
-      };
+    name = uuid;
+    value = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi";
+      installation_mode = "normal_installed";
     };
+  };
   profile_name = "sigurds_profile";
-
 in {
   programs.firefox = {
     enable = true;
@@ -33,6 +32,4 @@ in {
   home.file.".mozilla/firefox/${profile_name}/user.js".text = ''
     user_pref("layout.css.devPixelsPerPx", "0.8");
   '';
-
 }
-

@@ -1,12 +1,15 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "gurd";
   home.homeDirectory = "/home/gurd";
 
-  imports = [ ../lib/git-sync.nix ];
+  imports = [../lib/git-sync.nix];
 
   home.file = {
     ".bashrc".source = ../dotfiles/.bashrc;
@@ -29,17 +32,10 @@
   ];
 
   gurd.git-sync.keepassxc = {
-    enable    = true;
-    dir       = "keepassxc";
+    enable = true;
+    dir = "keepassxc";
     cloneFrom = "git@github.com:Unigurd/keepassxc";
   };
-
-
-
-
-
-
-
 
   # This value determines the Home Manager release that your configuration is
   # compatible with.

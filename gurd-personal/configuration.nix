@@ -1,12 +1,19 @@
-{ config, pkgs, lib, inputs, isd, ...}: {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  isd,
+  ...
+}: {
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
   imports = [../lib/xserver.nix ../lib/i18n.nix];
 
   # User gurd
   users.users.gurd = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "adbusers" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager" "adbusers"]; # Enable ‘sudo’ for the user.
   };
 
   # Enable the X11 windowing system with i3
@@ -16,28 +23,30 @@
   environment.systemPackages = with pkgs; [
     (import ../lib/emacs.nix pkgs)
     neovim
-    dig wget
+    dig
+    wget
     tmux
     git
-    keepassxc xclip  # xclip is needed for keepassxc-cli to be able to copy to clipboard
-    man-pages man-pages-posix
+    keepassxc
+    xclip # xclip is needed for keepassxc-cli to be able to copy to clipboard
+    man-pages
+    man-pages-posix
     python312Packages.python-lsp-server
     python312Packages.ruff
     htop
     nil
     python312
-    nodejs  # Needed for the emacs copilot package
-    scowl   # Needed to make emacs' icomplete work
-    file    # Needed for emacs' dired-show-file-type
+    nodejs # Needed for the emacs copilot package
+    scowl # Needed to make emacs' icomplete work
+    file # Needed for emacs' dired-show-file-type
     isd.default
     alejandra
   ];
 
-  services.logind.extraConfig =
-    ''
+  services.logind.extraConfig = ''
     IdleAction=ignore
     IdleActionSec=0
-    '';
+  '';
 
   environment.wordlist.enable = true;
 
@@ -57,7 +66,7 @@
 
   # Networking
   networking.hostName = "gurd-personal";
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default
   networking.extraHosts = "192.168.0.100 gurd-server";
 
   # Docker
@@ -77,11 +86,6 @@
 
   programs.adb.enable = true;
 
-
-
-
-
   # DO NOT CHANGE
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }

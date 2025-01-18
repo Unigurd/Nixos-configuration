@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ...}:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "sson";
@@ -23,14 +26,10 @@
     (import ../lib/emacs.nix pkgs)
     python312Packages.python-lsp-server
     nil
-    nodejs  # Needed for the emacs copilot package
+    nodejs # Needed for the emacs copilot package
     pulseaudio
     pavucontrol
   ];
-
-
-
-
 
   # This value determines the Home Manager release that your configuration is
   # compatible with.

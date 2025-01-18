@@ -1,8 +1,10 @@
-{ config, pkgs, inputs, ...}:
-
 {
-
-  imports = [ ../lib/git-sync.nix ../lib/firefox.nix];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [../lib/git-sync.nix ../lib/firefox.nix];
 
   home.file = {
     ".bashrc".source = ../dotfiles/.bashrc;
@@ -31,17 +33,10 @@
   ];
 
   gurd.git-sync.keepassxc = {
-    enable    = true;
-    dir       = "keepassxc";
+    enable = true;
+    dir = "keepassxc";
     cloneFrom = "git@github.com:Unigurd/keepassxc";
   };
-
-
-
-
-
-
-
 
   home.stateVersion = "23.11";
 }
