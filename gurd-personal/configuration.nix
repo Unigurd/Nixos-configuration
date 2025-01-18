@@ -30,6 +30,7 @@
     scowl   # Needed to make emacs' icomplete work
     file    # Needed for emacs' dired-show-file-type
     isd.default
+    alejandra
   ];
 
   services.logind.extraConfig =
