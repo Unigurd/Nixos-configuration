@@ -29,6 +29,7 @@
     nodejs # Needed for the emacs copilot package
     pulseaudio
     pavucontrol
+    keepassxc
   ];
 
   # This value determines the Home Manager release that your configuration is
