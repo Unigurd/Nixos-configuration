@@ -48,6 +48,7 @@ pkgs:
       # tree-sitter
       treesit-grammars.with-all-grammars
       treesit-auto
+      markdown-ts-mode
       # inspector
       inspector
       tree-inspector
