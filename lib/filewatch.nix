@@ -4,9 +4,9 @@ pkgs: let
     # `echo` and `true` are bash builtins
     pkgs.writeShellScriptBin "filewatch"
     ''
-      if [[ "$#" -lt 1 ]];
+      if [[ "$#" -lt 2 ]];
       then
-        echo "Needs one argument!"
+        echo "Missing parameter. Call like: $0 COMMAND FILES_OR_DIRS..." >&2
         exit 1
       fi
 
@@ -14,12 +14,20 @@ pkgs: let
 
       shift
 
+      inotify_output=""
+      inotify_retval=0
 
-      while true
+      while [[ "$inotify_retval" -eq 0 ]]
       do
         "$SHELL" -c "$command"
-        ${inotifywait} "$@" -e modify,create,delete,unmount,move,attrib 2>/dev/null 1>/dev/null
+        inotify_output=$(${inotifywait} "$@" -e modify,create,delete,unmount,move,attrib 2>&1)
+        inotify_retval=$?
       done
+
+      echo 1>&2
+      echo inotifywait failed with output: 1>&2
+      echo "$inotify_output" 1>&2
+      exit $inotify_retval
     ''
   );
 in
