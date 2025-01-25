@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  isd,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -32,6 +33,7 @@
     keepassxc
     entr
     (import ../lib/filewatch.nix pkgs)
+    isd.default
   ];
 
   # This value determines the Home Manager release that your configuration is
