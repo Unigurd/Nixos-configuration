@@ -7,7 +7,6 @@
   imports = [../lib/git-sync.nix ../lib/firefox.nix];
 
   home.file = {
-    ".bashrc".source = ../dotfiles/.bashrc;
     ".gitconfig".source = ../dotfiles/.gitconfig;
     ".Xresources".source = ../dotfiles/.Xresources;
     ".config/i3/config".source = ../dotfiles/.config/i3/config;
@@ -17,6 +16,11 @@
   programs.git = {
     enable = true;
     userEmail = "Sigurddam@hotmail.com";
+  };
+
+  programs.bash = {
+    enable = true;
+    initExtra = "source ${../dotfiles/.bashrc}";
   };
 
   home.packages = with pkgs; [
