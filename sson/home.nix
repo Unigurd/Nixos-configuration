@@ -30,6 +30,7 @@
     pulseaudio
     pavucontrol
     keepassxc
+    entr
     (import ../lib/filewatch.nix pkgs)
   ];
 

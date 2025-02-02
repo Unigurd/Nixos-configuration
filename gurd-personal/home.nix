@@ -29,6 +29,7 @@
     unzip
     binutils
     pulseaudio
+    entr
     (import ../lib/filewatch.nix pkgs)
   ];
 
