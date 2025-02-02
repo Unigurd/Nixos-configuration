@@ -2,6 +2,9 @@
 # even if it non-interactive. Prevent this.
 [[ "$-" != *i* ]] && return
 
+# Silence direnv when entering a directory with a .envrc
+export DIRENV_LOG_FORMAT=
+
 EDITOR=vi
 
 alias g=git
