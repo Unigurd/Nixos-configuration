@@ -34,6 +34,7 @@
     entr
     (import ../lib/filewatch.nix pkgs)
     isd.default
+    poetry
   ];
 
   # This value determines the Home Manager release that your configuration is
