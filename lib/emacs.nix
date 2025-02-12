@@ -46,6 +46,7 @@ pkgs:
       casual
       format-all
       envrc
+      python-pytest
       # tree-sitter
       treesit-grammars.with-all-grammars
       treesit-auto
