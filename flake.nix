@@ -28,51 +28,54 @@
     specialArgs = {
       inherit inputs;
       isd = isd.packages.${system};
+      gurd-python = self.packages."x86_64-linux".gurd-python;
     };
-  in {
-    nixosConfigurations = {
-      "gurd-personal" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = specialArgs;
-        modules = [
-          ./gurd-personal/configuration.nix
-          ./gurd-personal/hardware-configuration.nix
-          nixos-hardware.nixosModules.lenovo-thinkpad-t480s
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.gurd = import ./gurd-personal/home.nix;
-            home-manager.backupFileExtension = "backup";
-            # To pass inputs on to home.nix
-            home-manager.extraSpecialArgs = specialArgs;
-          }
-        ];
+  in
+    {
+      nixosConfigurations = {
+        "gurd-personal" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = specialArgs;
+          modules = [
+            ./gurd-personal/configuration.nix
+            ./gurd-personal/hardware-configuration.nix
+            nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.gurd = import ./gurd-personal/home.nix;
+              home-manager.backupFileExtension = "backup";
+              # To pass inputs on to home.nix
+              home-manager.extraSpecialArgs = specialArgs;
+            }
+          ];
+        };
+
+        "gurd-server" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = specialArgs;
+          modules = [
+            ./gurd-server/configuration.nix
+            ./gurd-server/hardware-configuration.nix
+          ];
+        };
       };
 
-      "gurd-server" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = specialArgs;
-        modules = [
-          ./gurd-server/configuration.nix
-          ./gurd-server/hardware-configuration.nix
-        ];
+      # For gurd-server
+      homeConfigurations = {
+        "gurd" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [gurd-server/home.nix];
+          extraSpecialArgs = specialArgs;
+        };
+        "sson" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [sson/home.nix];
+          extraSpecialArgs = specialArgs;
+        };
       };
-    };
-
-    # For gurd-server
-    homeConfigurations = {
-      "gurd" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [gurd-server/home.nix];
-        extraSpecialArgs = specialArgs;
-      };
-      "sson" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [sson/home.nix];
-        extraSpecialArgs = specialArgs;
-      };
-    };
-    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-  };
+      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+    }
+    // (import ./lib/python/python.nix {inherit pkgs;});
 }

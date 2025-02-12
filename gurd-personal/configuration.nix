@@ -4,6 +4,7 @@
   lib,
   inputs,
   isd,
+  gurd-python,
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -41,6 +42,7 @@
     file # Needed for emacs' dired-show-file-type
     isd.default
     alejandra
+    gurd-python
   ];
 
   services.logind.extraConfig = ''
