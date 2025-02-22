@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{pkgs, xrandr ? pkgs.xorg.xrandr, ...}: let
   system = "x86_64-linux";
   python = pkgs.python312.withPackages (
     ps: let
@@ -20,6 +20,7 @@ in {
     packages = [
       python
       pkgs.python312Packages.pytest
+      xrandr
     ];
     shellHook = "export PYTHONPATH=$PWD/lib/python:$PYTHONPATH";
   };
@@ -35,7 +36,7 @@ in {
 
       cat > $out/bin/gurd-monitor <<EOF
       #!/bin/env sh
-      PYTHONPATH="$src" exec ${python.interpreter} -m gurd.monitor
+      PATH=${xrandr}/bin:$PATH PYTHONPATH="$src" exec ${python.interpreter} -m gurd.monitor
       EOF
 
       chmod +x $out/bin/gurd-monitor
