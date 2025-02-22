@@ -1,5 +1,6 @@
 from importlib.resources import files
 from gurd.xrandr import (
+    parse_brightness,
     parse_display,
     parse_resolutions,
     parse_xrandr,
@@ -10,6 +11,7 @@ from gurd.xrandr import (
 import tests.resources
 import pytest
 
+xrandr_text = files(tests.resources).joinpath("xrandr-verbose.txt").read_text()
 
 resolutions_text = """
   1920x1080 (0x4a) 173.000MHz -HSync +VSync
@@ -69,7 +71,6 @@ MyDisplay {prefix}connected {primary}111x222+333+444
 
 
 def test_parse_all_displays():
-    xrandr_text = files(tests.resources).joinpath("xrandr-verbose.txt").read_text()
     xrandr = parse_xrandr(xrandr_text)
     assert list(xrandr[0].displays.keys()) == [
         "eDP-1",
@@ -78,3 +79,14 @@ def test_parse_all_displays():
         "DP-2",
         "HDMI-2",
     ]
+
+
+def test_parse_brightness():
+    string = "	Brightness: 0.90"
+    assert 0.9 == parse_brightness(string)
+
+
+def test_parse_brightness_in_context():
+    xrandr = parse_xrandr(xrandr_text)
+    breakpoint()
+    assert 0.7 == xrandr[0].displays["eDP-1"].brightness

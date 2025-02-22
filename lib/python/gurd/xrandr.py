@@ -94,6 +94,7 @@ class Display:
         resolutions,
         attributes=None,
         edid=None,
+        brightness=None,
     ):
         self.name = name
         self.connected = connected
@@ -106,6 +107,7 @@ class Display:
         self.attributes = attributes if attributes is not None else {}
         self.resolutions = resolutions
         self.edid = edid
+        self.brightness = brightness
 
     def __repr__(self):
         got_edid = ", EDID" if self.attributes.get("EDID") else ""
@@ -122,6 +124,7 @@ class Display:
             and (self.posx == other.posx)
             and (self.posy == other.posy)
             and (self.edid == other.edid)
+            and (self.brightness == other.brightness)
             and (not check_attributes or (self.attributes == other.attributes))
         )
 
@@ -141,6 +144,13 @@ def _get_int_or_none(x, key):
     if x is None or x[key] is None:
         return None
     return int(x[key])
+
+
+brightness_regex = "\tBrightness: ([0-9.]+)"
+
+
+def parse_brightness(string):
+    return float(re.match(brightness_regex, string)[1])
 
 
 def parse_display(string, start=0, end=None):
@@ -169,6 +179,11 @@ def parse_display(string, start=0, end=None):
     else:
         edid = None
 
+    if attributes.get("Brightness") is not None:
+        brightness = parse_brightness(attributes["Brightness"])
+    else:
+        brightness = None
+
     return Display(
         name=match["name"],
         connected=not bool(match["connected"]),
@@ -181,6 +196,7 @@ def parse_display(string, start=0, end=None):
         attributes=attributes,
         resolutions=resolutions,
         edid=edid,
+        brightness=brightness,
     )
 
 
