@@ -187,7 +187,7 @@ def parse_display(string, start=0, end=None):
     return Display(
         name=match["name"],
         connected=not bool(match["connected"]),
-        active=match2 is None,
+        active=match2 is not None,
         primary=bool(match2["primary"] if match2 is not None else None),
         width=_get_int_or_none(match2, "width"),
         height=_get_int_or_none(match2, "height"),

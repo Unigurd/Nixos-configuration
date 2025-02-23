@@ -90,3 +90,23 @@ def test_parse_brightness_in_context():
     xrandr = parse_xrandr(xrandr_text)
     breakpoint()
     assert 0.7 == xrandr[0].displays["eDP-1"].brightness
+
+
+def test_parse_active_in_context():
+    text = (
+        files(tests.resources)
+        .joinpath("xrandr-verbose-connected-but-not-active.txt")
+        .read_text()
+    )
+    xrandr = parse_xrandr(text)
+
+    for display in xrandr[0].displays.values():
+        if display.name == "eDP-1":
+            assert display.connected
+            assert display.active
+        elif display.name == "DP-1":
+            assert display.connected
+            assert not display.active
+        else:
+            assert not display.connected
+            assert not display.active
