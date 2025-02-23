@@ -39,7 +39,13 @@ in {
       PATH=${xrandr}/bin:$PATH PYTHONPATH="$src" exec ${python.interpreter} -m gurd.monitor
       EOF
 
+      cat > $out/bin/gurd-brightness <<EOF
+      #!/bin/env sh
+      PATH=${xrandr}/bin:$PATH PYTHONPATH="$src" exec ${python.interpreter} -m gurd.brightness "\$@"
+      EOF
+
       chmod +x $out/bin/gurd-monitor
+      chmod +x $out/bin/gurd-brightness
     '';
   };
 }
