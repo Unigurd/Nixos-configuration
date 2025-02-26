@@ -14,7 +14,26 @@
 	lm = lg --merges
 
 [merge]
+  # I don't remember why I chose diff3 over zdiff3
 	conflictStyle = diff3
 
 [pull]
 	ff = only
+
+# Many of these come from https://blog.gitbutler.com/how-git-core-devs-configure-git/
+
+[rebase]
+  updateRefs = true
+
+[diff]
+  colorMoved = true
+  algorithm = histogram
+
+[commit]
+  verbose = true
+
+[branch]
+  sort = committerdate
+
+[tag]
+  sort = version:refname
