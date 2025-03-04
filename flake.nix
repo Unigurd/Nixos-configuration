@@ -26,6 +26,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     specialArgs = {
+      inherit self;
       inherit inputs;
       isd = isd.packages.${system};
       gurd-python = self.packages."x86_64-linux".gurd-python;
