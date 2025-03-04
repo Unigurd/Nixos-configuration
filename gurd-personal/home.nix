@@ -2,9 +2,16 @@
   config,
   pkgs,
   inputs,
+  self,
   ...
 }: {
-  imports = [../lib/git-sync.nix ../lib/firefox.nix];
+  imports = [
+    ../lib/git-sync.nix
+    ../lib/firefox.nix
+    self.nixosModules.x86_64-linux.gurd-battery-warning
+  ];
+
+  gurd.battery-warning.enable = true;
 
   home.file = {
     ".gitconfig".source = ../dotfiles/.gitconfig;
