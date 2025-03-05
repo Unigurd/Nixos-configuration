@@ -34,29 +34,30 @@ in rec {
     ];
     shellHook = "export PYTHONPATH=$PWD/lib/python:$PYTHONPATH";
   };
-  packages."${system}" = {
+  packages."${system}" = rec {
+    gurd-monitor = import ./gurd-monitor.nix {
+      python = python;
+      xrandr = xrandr;
+      mkDerivation = pkgs.stdenv.mkDerivation;
+    };
+
+    gurd-brightness = import ./gurd-brightness.nix {
+      python = python;
+      xrandr = xrandr;
+      mkDerivation = pkgs.stdenv.mkDerivation;
+    };
+
     gurd-python = pkgs.stdenv.mkDerivation {
       pname = "gurd-python";
       version = "0.0";
+      dontUnpack = true;
 
-      src = ./.;
-      nativeBuildInputs = [python];
+      inherit gurd-monitor gurd-brightness;
 
       installPhase = ''
         mkdir -p $out/bin
-
-        cat > $out/bin/gurd-monitor <<EOF
-        #!/bin/env sh
-        PATH=${xrandr}/bin:$PATH PYTHONPATH="$src" exec ${python.interpreter} -m gurd.monitor
-        EOF
-
-        cat > $out/bin/gurd-brightness <<EOF
-        #!/bin/env sh
-        PATH=${xrandr}/bin:$PATH PYTHONPATH="$src" exec ${python.interpreter} -m gurd.brightness "\$@"
-        EOF
-
-        chmod +x $out/bin/gurd-monitor
-        chmod +x $out/bin/gurd-brightness
+        ln --symbolic ${gurd-monitor}/bin/gurd-monitor       $out/bin/gurd-monitor
+        ln --symbolic ${gurd-brightness}/bin/gurd-brightness $out/bin/gurd-brightness
       '';
     };
 
