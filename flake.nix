@@ -29,7 +29,6 @@
       inherit self;
       inherit inputs;
       isd = isd.packages.${system};
-      gurd-python = self.packages."x86_64-linux".gurd-python;
     };
   in
     {

@@ -4,7 +4,7 @@
   lib,
   inputs,
   isd,
-  gurd-python,
+  self,
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -32,7 +32,10 @@
     xclip # xclip is needed for keepassxc-cli to be able to copy to clipboard
     man-pages
     man-pages-posix
-    python312Packages.python-lsp-server
+    (python312Packages.python-lsp-server.overridePythonAttrs
+      (old: {
+        dependencies = old.dependencies ++ old.optional-dependencies.rope;
+      }))
     python312Packages.ruff
     htop
     nil
@@ -42,7 +45,7 @@
     file # Needed for emacs' dired-show-file-type
     isd.default
     alejandra
-    gurd-python
+    self.packages.x86_64-linux.gurd-python
   ];
 
   services.logind.extraConfig = ''
