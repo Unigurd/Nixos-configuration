@@ -22,7 +22,6 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    (import ../lib/emacs.nix pkgs)
     neovim
     dig
     wget
@@ -38,13 +37,8 @@
       }))
     python312Packages.ruff
     htop
-    nil
     python312
-    nodejs # Needed for the emacs copilot package
-    scowl # Needed to make emacs' icomplete work
-    file # Needed for emacs' dired-show-file-type
     isd.default
-    alejandra
     self.packages.x86_64-linux.gurd-python
   ];
 

@@ -9,6 +9,7 @@
     ../lib/git-sync.nix
     ../lib/firefox.nix
     self.nixosModules.x86_64-linux.gurd-battery-warning
+    (import ../lib/emacs.nix pkgs).module
   ];
 
   gurd.battery-warning.enable = true;
