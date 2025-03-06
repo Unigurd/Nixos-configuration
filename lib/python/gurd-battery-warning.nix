@@ -37,10 +37,9 @@
             Type = "oneshot";
             TimeoutSec = "10";
             ExecStart = "${package}/bin/gurd-battery-warning";
-            Environment = [
-              # Something high just so I get to see it in action
-              "GURD_BATTERY_WARNING_CAPACITY_PERCENTAGE=40"
-            ];
+            # Environment = [
+            #   "GURD_BATTERY_WARNING_CAPACITY_PERCENTAGE=40"
+            # ];
           };
         };
         timers.gurd-battery-warning = {
