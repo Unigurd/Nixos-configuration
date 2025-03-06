@@ -1,0 +1,4 @@
+* TODO gurd-brightness makes screen go black
+Why does the first invocation after reboot of gurd-brightness make the screen go black for a moment?
+* TODO gurd-brightness too slow
+RIIR?
