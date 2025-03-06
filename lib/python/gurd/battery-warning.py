@@ -10,12 +10,27 @@ capacity_percentage_threshold = int(
 
 
 def battery_capacity(battery):
-    capacity = battery / "capacity"
-    if not capacity.exists:
+    # `battery/"energy_full_design"` is the max energy of the battery
+    # when it was new, and `battery/"energy_full"` is the max energy
+    # of the batter as it is now. `battery/"capacity"` is equivalent
+    # to `100*energy_now/energy_full`, bu I want
+    # `100*energy_now/energy_full_design`.
+    energy_full_design_path = battery / "energy_full_design"
+    if not energy_full_design_path.exists:
         return
 
-    with open(capacity) as fd:
-        return int(fd.read())
+    with open(energy_full_design_path) as fd:
+        energy_full_design = int(fd.read())
+
+    energy_now_path = battery / "energy_now"
+    if not energy_now_path.exists:
+        return
+
+    with open(energy_now_path) as fd:
+        energy_now = int(fd.read())
+
+        # No real reason that I chose to work with ints
+        return (energy_now * 100) // energy_full_design
 
 
 def battery_is_discharging(battery):
