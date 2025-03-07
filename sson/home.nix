@@ -5,6 +5,7 @@
   isd,
   ...
 }: {
+  imports = [(import ../lib/emacs.nix pkgs).module];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "sson";
@@ -24,7 +25,6 @@
   };
 
   home.packages = with pkgs; [
-    (import ../lib/emacs.nix pkgs).package
     python312Packages.python-lsp-server
     nil
     nodejs # Needed for the emacs copilot package
