@@ -68,6 +68,8 @@ pkgs: let
         nodejs # Needed for the emacs copilot package
         scowl # Needed to make emacs' icomplete work
         file # Needed for emacs' dired-show-file-type
+        texlive.combined.scheme-full
+        ghostscript # pdf2dsc from this package is used for `preview-latex` in emacs
         nil
         alejandra
       ];

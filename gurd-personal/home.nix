@@ -39,8 +39,6 @@
 
   home.packages = with pkgs; [
     evince
-    texlive.combined.scheme-full
-    ghostscript # pdf2dsc from this package is used for `preview-latex` in emacs
     inputs.bash-utils.packages."${pkgs.system}".label
     inputs.bash-utils.packages."${pkgs.system}".note
     jq
