@@ -70,6 +70,7 @@ pkgs: let
         file # Needed for emacs' dired-show-file-type
         texlive.combined.scheme-full
         ghostscript # pdf2dsc from this package is used for `preview-latex` in emacs
+        imagemagick # Needed for better latex preview
         nil
         alejandra
       ];
