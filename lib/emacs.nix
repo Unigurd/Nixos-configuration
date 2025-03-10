@@ -74,6 +74,7 @@ pkgs: let
         imagemagick # Needed for better latex preview
         nil
         alejandra
+        gnuplot # Needed for graphing with calc
       ];
     };
   };
