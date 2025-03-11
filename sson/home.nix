@@ -12,7 +12,6 @@
   home.homeDirectory = "/home/sson";
 
   home.file = {
-    ".bashrc".source = ../dotfiles/.bashrc;
     ".gitconfig".source = ../dotfiles/.gitconfig;
     ".Xresources".source = ../dotfiles/.Xresources;
     ".config/i3/config".source = ../dotfiles/.config/i3/config;
@@ -22,6 +21,17 @@
   programs.git = {
     enable = true;
     userEmail = "sson@baselifescience.com";
+  };
+
+  programs.bash = {
+    enable = true;
+    profileExtra = "if [ -e /home/sson/.nix-profile/etc/profile.d/nix.sh ]; then . /home/sson/.nix-profile/etc/profile.d/nix.sh; fi";
+    bashrcExtra = ''
+      EDITOR=vi
+      alias g=git
+      # Silence direnv when entering a directory with a .envrc
+      export DIRENV_LOG_FORMAT=
+    '';
   };
 
   home.packages = with pkgs; [
