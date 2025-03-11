@@ -31,6 +31,8 @@
       alias g=git
       # Silence direnv when entering a directory with a .envrc
       export DIRENV_LOG_FORMAT=
+      # wordlist for emacs to use with word completion
+      export WORDLIST=${pkgs.scowl}/share/dict/words.txt
     '';
   };
 
