@@ -22,8 +22,9 @@
 
 # Many of these come from https://blog.gitbutler.com/how-git-core-devs-configure-git/
 
-[rebase]
-  updateRefs = true
+# Too dangerous, and it's convenient enough in magit anyways
+# [rebase]
+#   updateRefs = true
 
 [diff]
   colorMoved = true
