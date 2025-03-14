@@ -48,6 +48,7 @@ pkgs: let
         format-all
         envrc
         python-pytest
+        dired-imenu
         # tree-sitter
         treesit-grammars.with-all-grammars
         treesit-auto
