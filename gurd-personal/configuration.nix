@@ -9,7 +9,7 @@
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
-  imports = [../lib/xserver.nix ../lib/i18n.nix];
+  imports = [../lib/xserver.nix ../lib/i18n.nix ../lib/jellyfin.nix];
 
   # User gurd
   users.users.gurd = {
