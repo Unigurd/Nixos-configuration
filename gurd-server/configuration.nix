@@ -7,7 +7,7 @@
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
-  imports = [../lib/xserver.nix ../lib/i18n.nix];
+  imports = [../lib/xserver.nix ../lib/i18n.nix ../lib/jellyfin.nix];
 
   # User gurd
   users.users.gurd = {
@@ -21,6 +21,11 @@
 
   # Enable X11 with i3
   gurd.i3.enable = true;
+
+  gurd.jellyfin = {
+    enable = true;
+    openFirewall = false;
+  };
 
   # System packages
   environment.systemPackages = with pkgs; [
