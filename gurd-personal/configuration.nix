@@ -44,6 +44,8 @@
 
   gurd.jellyfin.enable = true;
 
+  services.tailscale.enable = true;
+
   services.logind.extraConfig = ''
     IdleAction=ignore
     IdleActionSec=0
