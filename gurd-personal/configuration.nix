@@ -42,6 +42,8 @@
     self.packages.x86_64-linux.gurd-python
   ];
 
+  gurd.jellyfin.enable = true;
+
   services.logind.extraConfig = ''
     IdleAction=ignore
     IdleActionSec=0

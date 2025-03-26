@@ -5,11 +5,25 @@ let
     lib,
     ...
   }: {
-    services.jellyfin = {
-      enable = true;
-      # openFirewall = true;
+    options = {
+      gurd.jellyfin = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
+        openFirewall = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
+      };
     };
-    environment.systemPackages = [pkgs.jellyfin pkgs.jellyfin-web pkgs.jellyfin-ffmpeg];
+    config = {
+      services.jellyfin = {
+        enable = config.gurd.jellyfin.enable;
+        openFirewall = config.gurd.jellyfin.openFirewall;
+      };
+      environment.systemPackages = [pkgs.jellyfin pkgs.jellyfin-web pkgs.jellyfin-ffmpeg];
+    };
   };
 in
   module
