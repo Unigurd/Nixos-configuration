@@ -23,6 +23,7 @@
   gurd.i3.enable = true;
 
   services.logind.extraConfig = ''
+    IdleAction=ignore
     HandleLidSwitch=ignore
     HandleLidSwitchExternalPower=ignore
     HandleLidSwitchDocked=ignore
