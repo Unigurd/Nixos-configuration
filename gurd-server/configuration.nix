@@ -40,6 +40,10 @@
     pkgs.man-pages-posix
   ];
 
+  services.tailscale = {
+    enable = true;
+  };
+
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?
   documentation.dev.enable = true;
 
