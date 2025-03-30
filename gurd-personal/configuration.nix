@@ -42,8 +42,6 @@
     self.packages.x86_64-linux.gurd-python
   ];
 
-  gurd.jellyfin.enable = true;
-
   services.tailscale.enable = true;
 
   services.logind.extraConfig = ''
