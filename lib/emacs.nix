@@ -49,6 +49,7 @@ pkgs: let
         envrc
         python-pytest
         dired-imenu
+        ess
         # tree-sitter
         treesit-grammars.with-all-grammars
         treesit-auto
