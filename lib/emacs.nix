@@ -14,7 +14,8 @@ pkgs: let
         cape
         # evil
         # These are not used because evil fails to native-compile
-        # evil evil-paredit
+        evil
+        evil-paredit
         # Lisp
         geiser
         geiser-guile
