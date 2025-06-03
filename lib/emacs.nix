@@ -51,6 +51,7 @@ pkgs: let
         python-pytest
         dired-imenu
         ess
+        keepass-mode
         # tree-sitter
         treesit-grammars.with-all-grammars
         treesit-auto
