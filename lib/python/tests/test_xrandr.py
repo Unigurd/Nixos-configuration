@@ -88,7 +88,6 @@ def test_parse_brightness():
 
 def test_parse_brightness_in_context():
     xrandr = parse_xrandr(xrandr_text)
-    breakpoint()
     assert 0.7 == xrandr[0].displays["eDP-1"].brightness
 
 
