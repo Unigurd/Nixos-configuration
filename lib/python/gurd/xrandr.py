@@ -1,4 +1,7 @@
 import re
+from typing import NamedTuple
+from dataclasses import field
+
 from gurd.reutils import match_regions, next_line_from
 
 import pyedid
@@ -32,11 +35,10 @@ def parse_attributes(string, start=0, end=None):
     return attributes
 
 
-class Resolution:
-    def __init__(self, width, height, raw_string=None):
-        self.width = width
-        self.height = height
-        self.raw_string = raw_string
+class Resolution(NamedTuple):
+    width: int
+    height: int
+    raw_string: str | None = None
 
     def __repr__(self):
         return f"<Resolution {self.width}x{self.height}>"
@@ -80,34 +82,19 @@ def parse_resolutions(string, start=0, end=None):
     return resolutions
 
 
-class Display:
-    def __init__(
-        self,
-        name,
-        connected,
-        active,
-        primary,
-        width,
-        height,
-        posx,
-        posy,
-        resolutions,
-        attributes=None,
-        edid=None,
-        brightness=None,
-    ):
-        self.name = name
-        self.connected = connected
-        self.active = active
-        self.primary = primary
-        self.width = width
-        self.height = height
-        self.posx = posx
-        self.posy = posy
-        self.attributes = attributes if attributes is not None else {}
-        self.resolutions = resolutions
-        self.edid = edid
-        self.brightness = brightness
+class Display(NamedTuple):
+    name: str
+    connected: bool
+    active: bool
+    primary: bool
+    width: int
+    height: int
+    posx: int
+    posy: int
+    resolutions: list[Resolution]
+    attributes: dict = field(default_factory=dict)
+    edid: pyedid.Edid | None = None
+    brightness: float | None = None
 
     def __repr__(self):
         got_edid = ", EDID" if self.attributes.get("EDID") else ""
@@ -216,10 +203,9 @@ def parse_displays(string, start=0, end=None):
     return displays
 
 
-class Screen:
-    def __init__(self, number, displays):
-        self.number = number
-        self.displays = displays
+class Screen(NamedTuple):
+    number: int
+    displays: list[Display]
 
     def __repr__(self):
         display_string = ", ".join(
