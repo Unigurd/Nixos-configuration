@@ -47,6 +47,7 @@
     pulseaudio
     entr
     (import ../lib/filewatch.nix pkgs)
+    scrot
   ];
 
   gurd.git-sync.keepassxc = {
