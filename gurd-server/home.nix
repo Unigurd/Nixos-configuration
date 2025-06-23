@@ -27,6 +27,7 @@
   home.packages = with pkgs; [
     inputs.bash-utils.packages."${pkgs.system}".label
     inputs.bash-utils.packages."${pkgs.system}".note
+    htop
     jq
     unzip
   ];
