@@ -28,6 +28,7 @@
     inputs.bash-utils.packages."${pkgs.system}".label
     inputs.bash-utils.packages."${pkgs.system}".note
     htop
+    lm_sensors
     jq
     unzip
   ];
