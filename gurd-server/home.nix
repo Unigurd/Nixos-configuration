@@ -31,6 +31,7 @@
     lm_sensors
     jq
     unzip
+    id3v2
   ];
 
   gurd.git-sync.keepassxc = {
