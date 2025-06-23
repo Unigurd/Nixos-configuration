@@ -101,7 +101,7 @@
   services.logind.lidSwitch = "ignore";
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [22]; # SSH -- OpenSSH
+  networking.firewall.allowedTCPPorts = [22 8096]; # SSH -- OpenSSH
   networking.firewall.allowedUDPPorts = [53]; # DNS -- Adguard Home
 
   # Source ~/.bashrc from login shells. Needed when ssh'ing in.
