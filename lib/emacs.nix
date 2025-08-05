@@ -52,6 +52,7 @@ pkgs: let
         dired-imenu
         ess
         keepass-mode
+        gptel
         # tree-sitter
         treesit-grammars.with-all-grammars
         treesit-auto
