@@ -46,6 +46,8 @@
     entr
     (import ../lib/filewatch.nix pkgs)
     isd.default
+    pipx
+    uv
     poetry
   ];
 
