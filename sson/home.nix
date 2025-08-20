@@ -49,6 +49,7 @@
     pipx
     uv
     poetry
+    (azure-cli.withExtensions [azure-cli-extensions.azure-devops])
   ];
 
   # This value determines the Home Manager release that your configuration is
