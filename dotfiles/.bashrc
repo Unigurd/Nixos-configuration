@@ -12,3 +12,6 @@ alias g=git
 # The label functions need to change current dir
 # so they need to be bash functions and so be sourced
 source gurd-label.sh
+
+# `uv` saves its tools here so I need it to be in PATH at work
+export PATH=~/.local/bin:$PATH
