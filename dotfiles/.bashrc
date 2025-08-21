@@ -1,11 +1,11 @@
 # Bash will source this file when run over ssh
-# even if it non-interactive. Prevent this.
+# even if it's non-interactive. Prevent this.
 [[ "$-" != *i* ]] && return
 
 # Silence direnv when entering a directory with a .envrc
 export DIRENV_LOG_FORMAT=
 
-EDITOR=vi
+EDITOR=emacsclient
 
 alias g=git
 
