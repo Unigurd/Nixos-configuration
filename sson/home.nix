@@ -36,6 +36,12 @@
     '';
   };
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   home.packages = with pkgs; [
     python312Packages.python-lsp-server
     nil
