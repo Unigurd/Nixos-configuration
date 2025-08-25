@@ -33,6 +33,8 @@
       export DIRENV_LOG_FORMAT=
       # wordlist for emacs to use with word completion
       export WORDLIST=${pkgs.scowl}/share/dict/words.txt
+      # `uv` saves its tools here so I need it to be in PATH at work
+      export PATH=~/.local/bin:$PATH
     '';
   };
 
