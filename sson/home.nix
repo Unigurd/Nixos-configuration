@@ -57,7 +57,8 @@
     pipx
     uv
     poetry
-    (azure-cli.withExtensions [azure-cli-extensions.azure-devops])
+    # Commented because it doesn't work with nixpkgs of 2025-08-25
+    # (azure-cli.withExtensions [azure-cli-extensions.azure-devops])
   ];
 
   # This value determines the Home Manager release that your configuration is
