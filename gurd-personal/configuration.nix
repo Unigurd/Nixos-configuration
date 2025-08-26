@@ -44,10 +44,10 @@
 
   services.tailscale.enable = true;
 
-  services.logind.extraConfig = ''
-    IdleAction=ignore
-    IdleActionSec=0
-  '';
+  services.logind.settings.Login = {
+    IdleAction = "ignore";
+    IdleActionSec = 0;
+  };
 
   environment.wordlist.enable = true;
 

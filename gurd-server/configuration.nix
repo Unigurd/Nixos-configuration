@@ -22,12 +22,12 @@
   # Enable X11 with i3
   gurd.i3.enable = true;
 
-  services.logind.extraConfig = ''
-    IdleAction=ignore
-    HandleLidSwitch=ignore
-    HandleLidSwitchExternalPower=ignore
-    HandleLidSwitchDocked=ignore
-  '';
+  services.logind.settings.Login = {
+    IdleAction = "ignore";
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+  };
 
   gurd.jellyfin = {
     enable = true;
