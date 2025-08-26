@@ -42,6 +42,7 @@
     inputs.bash-utils.packages."${pkgs.system}".label
     inputs.bash-utils.packages."${pkgs.system}".note
     jq
+    zip
     unzip
     binutils
     pulseaudio
