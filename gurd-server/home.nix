@@ -30,6 +30,7 @@
     htop
     lm_sensors
     jq
+    zip
     unzip
     id3v2
   ];
