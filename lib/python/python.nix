@@ -15,6 +15,11 @@
           hash = "sha256-5huO97aAbsU26pcb9lDjRw9qnNrplNb1DS2Xw/jxuPQ=";
         };
 
+        # These two settings were suggested by nix when the build
+        # broke after a lock update
+        pyproject = true;
+        build-system = [ps.setuptools];
+
         dependencies = [ps.requests];
       };
     in [pyedid]
