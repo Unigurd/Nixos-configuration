@@ -37,7 +37,8 @@
       }))
     python312Packages.ruff
     htop
-    python312
+    # dbus-python needed for the eduroam setup script
+    (python312.withPackages (ps: [ps.dbus-python]))
     isd.default
     self.packages.x86_64-linux.gurd-python
   ];
