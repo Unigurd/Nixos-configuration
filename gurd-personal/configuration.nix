@@ -37,8 +37,15 @@
       }))
     python312Packages.ruff
     htop
-    # dbus-python needed for the eduroam setup script
-    (python312.withPackages (ps: [ps.dbus-python]))
+    (python312.withPackages (ps: [
+      # Needed for the eduroam setup script
+      ps.dbus-python
+      # Needed for jupyter notebooks in vs code for mekrel
+      ps.jupyter
+      ps.notebook
+      ps.ipykernel
+      ps.pip
+    ]))
     isd.default
     self.packages.x86_64-linux.gurd-python
   ];
