@@ -54,6 +54,8 @@ pkgs: let
         ess
         keepass-mode
         gptel
+        code-cells
+        jupyter
         # tree-sitter
         treesit-grammars.with-all-grammars
         treesit-auto
@@ -81,6 +83,7 @@ pkgs: let
         nil
         alejandra
         gnuplot # Needed for graphing with calc
+        python313Packages.jupytext
       ];
     };
   };
