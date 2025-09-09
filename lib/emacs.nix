@@ -32,6 +32,7 @@ pkgs: let
         vundo
         undo-fu-session
         # various
+        poly-R
         flycheck
         gcmh
         auctex
