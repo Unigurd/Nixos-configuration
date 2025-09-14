@@ -52,6 +52,8 @@
     self.packages.x86_64-linux.gurd-python
   ];
 
+  programs.gnupg.agent.enable = true;
+
   services.tailscale.enable = true;
 
   services.logind.settings.Login = {
