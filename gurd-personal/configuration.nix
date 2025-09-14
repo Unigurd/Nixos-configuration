@@ -45,6 +45,8 @@
       ps.notebook
       ps.ipykernel
       ps.pip
+      ps.numpy
+      ps.matplotlib
     ]))
     isd.default
     self.packages.x86_64-linux.gurd-python
