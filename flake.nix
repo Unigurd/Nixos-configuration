@@ -3,6 +3,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     bash-utils = {
@@ -23,6 +27,7 @@
     self,
     nixpkgs,
     nixos-hardware,
+    nur,
     home-manager,
     bash-utils,
     isd,
@@ -33,6 +38,7 @@
     specialArgs = {
       inherit self;
       inherit inputs;
+      nurpkgs = nur.legacyPackages.${system};
       isd = isd.packages.${system};
     };
   in
