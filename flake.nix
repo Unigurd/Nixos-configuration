@@ -13,6 +13,10 @@
       url = "github:isd-project/isd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    waveforms = {
+      url = "github:liff/waveforms-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -22,6 +26,7 @@
     home-manager,
     bash-utils,
     isd,
+    waveforms,
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -49,6 +54,7 @@
               # To pass inputs on to home.nix
               home-manager.extraSpecialArgs = specialArgs;
             }
+            waveforms.nixosModule
           ];
         };
 

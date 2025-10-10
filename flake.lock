@@ -151,7 +151,8 @@
         "home-manager": "home-manager",
         "isd": "isd",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "waveforms": "waveforms"
       }
     },
     "systems": {
@@ -191,6 +192,26 @@
       "original": {
         "owner": "pyproject-nix",
         "repo": "uv2nix",
+        "type": "github"
+      }
+    },
+    "waveforms": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757845097,
+        "narHash": "sha256-pA+G2XGZ1ZDDJ2L5SG0JcvACXNm0oZ3n2erujcD3A9o=",
+        "owner": "liff",
+        "repo": "waveforms-flake",
+        "rev": "c6fac3b8694ab95a3f4204b6bf110df9d2594d0f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "liff",
+        "repo": "waveforms-flake",
         "type": "github"
       }
     }

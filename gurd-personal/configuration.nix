@@ -14,7 +14,7 @@
   # User gurd
   users.users.gurd = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "adbusers"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager" "adbusers" "plugdev"]; # Enable ‘sudo’ for the user.
   };
 
   # Enable the X11 windowing system with i3
