@@ -62,6 +62,7 @@
     poetry
     htop
     strace
+    nix-index
     # Commented because it doesn't work with nixpkgs of 2025-08-25
     # (azure-cli.withExtensions [azure-cli-extensions.azure-devops])
   ];
