@@ -41,6 +41,7 @@
       nurpkgs = nur.legacyPackages.${system};
       isd = isd.packages.${system};
     };
+    gurd-python = import ./lib/python/python.nix {inherit pkgs;};
   in
     {
       nixosConfigurations = {
@@ -87,7 +88,12 @@
           extraSpecialArgs = specialArgs;
         };
       };
+
+      nixosModules.${system}.gurd-battery-warning = gurd-python.nixosModules.${system}.gurd-battery-warning;
+
+      devShells.x86_64-linux.gurd-python = gurd-python.devShells;
+
+      packages.${system} = gurd-python.packages.${system};
       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-    }
-    // (import ./lib/python/python.nix {inherit pkgs;});
+    };
 }
