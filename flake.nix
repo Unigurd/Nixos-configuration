@@ -91,6 +91,18 @@
 
       nixosModules.${system}.gurd-battery-warning = gurd-python.nixosModules.${system}.gurd-battery-warning;
 
+
+      devShells.x86_64-linux.bls-services = pkgs.mkShell {
+        packages = [pkgs.gnumake pkgs.python312];
+        # I don't know why it doesn't work in LD_LIBRARY_PATH
+        LD_PRELOAD = [
+          "${pkgs.glib.dev.out}/lib/libgobject-2.0.so"
+          "${pkgs.pango.out}/lib/libpango-1.0.so"
+          "${pkgs.pango.out}/lib/libpangoft2-1.0.so"
+          "${pkgs.fontconfig.lib}/lib/libfontconfig.so.1"
+        ];
+      };
+
       devShells.x86_64-linux.gurd-python = gurd-python.devShells;
 
       packages.${system} = gurd-python.packages.${system};
