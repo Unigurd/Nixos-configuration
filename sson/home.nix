@@ -5,7 +5,7 @@
   isd,
   ...
 }: {
-  imports = [(import ../lib/emacs.nix pkgs).module];
+  imports = [(import ../lib/emacs.nix pkgs).module  ../lib/firefox.nix];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "sson";
