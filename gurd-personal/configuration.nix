@@ -47,6 +47,7 @@
       ps.pip
       ps.numpy
       ps.matplotlib
+      ps.scikit-learn
     ]))
     isd.default
     self.packages.x86_64-linux.gurd-python
