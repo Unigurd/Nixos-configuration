@@ -12,7 +12,7 @@
   # User gurd
   users.users.gurd = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "jellyfin"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager" "jellyfin" "minecraft"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
       # To ssh in from gurd-personal
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5BXPPjBBmXO5EMK5t4Vo24b77Kv0zcYYXFDdb2PM35 Sigurddam@hotmail.com"
@@ -96,6 +96,12 @@
         password = "$2y$10$zF9iCCc3Tge7J0FoNusnbe22qS/WAVU9FMDCZhQz.tdyN39tsdpGe";
       }
     ];
+  };
+
+  services.minecraft-server = {
+    enable = true;
+    eula = true;
+    openFirewall = true;
   };
 
   services.logind.lidSwitch = "ignore";

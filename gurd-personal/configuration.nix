@@ -82,6 +82,8 @@
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default
   networking.extraHosts = "192.168.0.100 gurd-server";
 
+  networking.firewall.allowedTCPPorts = [25565];
+
   # Docker
   virtualisation.docker.enable = true;
 
