@@ -94,13 +94,11 @@
 
       devShells.x86_64-linux.bls-services = pkgs.mkShell {
         packages = [pkgs.gnumake pkgs.python312];
-        # I don't know why it doesn't work in LD_LIBRARY_PATH
-        LD_PRELOAD = [
-          "${pkgs.glib.dev.out}/lib/libgobject-2.0.so"
-          "${pkgs.pango.out}/lib/libpango-1.0.so"
-          "${pkgs.pango.out}/lib/libpangoft2-1.0.so"
-          "${pkgs.fontconfig.lib}/lib/libfontconfig.so.1"
-        ];
+        # `glib`,`pango` and `fontconfig` is needed for weasyprint
+        LD_LIBRARY_PATH = let
+          libs = [pkgs.glib.dev.out pkgs.pango.out pkgs.fontconfig.lib];
+          strlibs = pkgs.lib.strings.join "/lib/:";
+          in strlibs + "$LD_LIBRARY_PATH";
       };
 
       devShells.x86_64-linux.gurd-python = gurd-python.devShells;
