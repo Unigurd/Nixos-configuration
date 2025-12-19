@@ -19,3 +19,5 @@ export PATH=~/.local/bin:$PATH
 ## Avoid x11-ssh-askpass popping up a graphical prompt when
 ## using git as git will use SSH_ASKPASS when GIT_ASKPASS is unset.
 export GIT_ASKPASS=""
+
+alias ll='ls -lh'
