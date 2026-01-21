@@ -62,6 +62,8 @@
     IdleActionSec = 0;
   };
 
+  programs.steam.enable = true;
+
   environment.wordlist.enable = true;
 
   # Developer documentation (How does this compare to pkgs.man-pages(-posix)?

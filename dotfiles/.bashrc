@@ -21,3 +21,14 @@ export PATH=~/.local/bin:$PATH
 export GIT_ASKPASS=""
 
 alias ll='ls -lh'
+
+gurdprompt() {
+  longprompt='\[\033]2;\h:\u:\w\007\]\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] '
+  shortprompt='\[\033[1;32m\]\$\[\033[0m\] '
+  if [[ "$PS1" == "$longprompt" ]]
+  then
+    PS1="$shortprompt"
+  else
+    PS1="$longprompt"
+  fi
+}

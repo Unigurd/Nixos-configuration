@@ -37,7 +37,12 @@
     initExtra = "source ${../dotfiles/.bashrc}";
   };
 
+  # programs.gpg.enable = true;
+  # services.gnome-keyring.enable = true;
+  # services.gpg-agent.enable = true;
+
   home.packages = with pkgs; [
+    # pinentry
     vscode
     evince
     inputs.bash-utils.packages."${pkgs.system}".label
