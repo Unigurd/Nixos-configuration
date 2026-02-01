@@ -15,7 +15,7 @@ pkgs: let
         # evil
         # These are not used because evil fails to native-compile
         evil
-        evil-paredit
+        evil-smartparens
         # Lisp
         geiser
         geiser-guile
@@ -41,7 +41,7 @@ pkgs: let
         haskell-mode
         nix-mode
         font-lock-studio
-        paredit
+        smartparens
         eglot
         hydra
         fold-dwim
