@@ -32,6 +32,7 @@ pkgs: let
         vundo
         undo-fu-session
         # various
+        skewer-mode
         poly-R
         flycheck
         gcmh
