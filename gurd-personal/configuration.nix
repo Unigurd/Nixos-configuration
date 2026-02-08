@@ -106,6 +106,8 @@
   # This option is no longer needed as systemd 258 handles uaccess rules automatically. Please add `pkgs.android-tools` to your system packages to get the adb command.
   # programs.adb.enable = true;
 
+  nix.registry.gurd.flake = self;
+
   # DO NOT CHANGE
   system.stateVersion = "22.05"; # Did you read the comment?
 }
