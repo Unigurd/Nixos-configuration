@@ -100,7 +100,11 @@
   # $- is current shell options
   programs.bash.loginShellInit = ''[[ -n "$BASH" ]] && [[ "$-" == *i* ]] && . ~/.bashrc'';
 
-  programs.adb.enable = true;
+  # adb has been disabled because of the following error after a nixpkgs upgrade:
+  # Failed assertions:
+  # - The option definition `programs.adb' in `/nix/store/p0947ifyib9rpywx7ijsjkmiba56pljx-source/gurd-personal/configuration.nix' no longer has any effect; please remove it.
+  # This option is no longer needed as systemd 258 handles uaccess rules automatically. Please add `pkgs.android-tools` to your system packages to get the adb command.
+  # programs.adb.enable = true;
 
   # DO NOT CHANGE
   system.stateVersion = "22.05"; # Did you read the comment?
