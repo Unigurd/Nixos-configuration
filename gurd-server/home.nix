@@ -25,8 +25,8 @@
   };
 
   home.packages = with pkgs; [
-    inputs.bash-utils.packages."${pkgs.system}".label
-    inputs.bash-utils.packages."${pkgs.system}".note
+    inputs.bash-utils.packages."${pkgs.stdenv.hostPlatform.system}".label
+    inputs.bash-utils.packages."${pkgs.stdenv.hostPlatform.system}".note
     htop
     lm_sensors
     jq

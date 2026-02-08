@@ -23,7 +23,7 @@
 
   programs.git = {
     enable = true;
-    userEmail = "Sigurddam@hotmail.com";
+    settings.user.email = "Sigurddam@hotmail.com";
   };
 
   programs.direnv = {
@@ -45,8 +45,8 @@
     # pinentry
     vscode
     evince
-    inputs.bash-utils.packages."${pkgs.system}".label
-    inputs.bash-utils.packages."${pkgs.system}".note
+    inputs.bash-utils.packages."${pkgs.stdenv.hostPlatform.system}".label
+    inputs.bash-utils.packages."${pkgs.stdenv.hostPlatform.system}".note
     jq
     zip
     unzip
