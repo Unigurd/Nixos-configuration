@@ -106,13 +106,12 @@
         # `icu`    is needed for spire-xls
         # `cc` is needed for numpy
         # `glib`,`pango` and `fontconfig` is needed for weasyprint
-        LD_LIBRARY_PATH = let
-          libs = [pkgs.stdenv.cc.cc.lib pkgs.icu pkgs.glib.dev.out pkgs.pango.out pkgs.fontconfig.lib];
-          strlibs = pkgs.lib.strings.join "/lib/:";
-          in strlibs + "$LD_LIBRARY_PATH";
-        shellHook = ''
-         export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:${pkgs.icu}/lib/:${pkgs.glib.dev.out}/lib/:${pkgs.pango.out}/lib/:${pkgs.fontconfig.lib}/lib/:$LD_LIBRARY_PATH"
-        '';
+        shellHook = let
+          libs = [pkgs.stdenv.cc.cc.lib pkgs.icu pkgs.glib.dev.out pkgs.pango.out pkgs.fontconfig.lib pkgs.libz ""];
+          strlibs = pkgs.lib.strings.join "/lib/:" libs;
+          in ''
+             export LD_LIBRARY_PATH="${strlibs}""$LD_LIBRARY_PATH";
+          '';
       };
 
 
