@@ -57,6 +57,7 @@ pkgs: let
         gptel
         code-cells
         jupyter
+        jinja2-mode
         # tree-sitter
         treesit-grammars.with-all-grammars
         treesit-auto
