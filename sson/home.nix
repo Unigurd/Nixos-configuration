@@ -20,7 +20,7 @@
 
   programs.git = {
     enable = true;
-    userEmail = "sson@baselifescience.com";
+    settings.user.email = "sson@baselifescience.com";
   };
 
   programs.bash = {
