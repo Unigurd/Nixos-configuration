@@ -72,6 +72,10 @@
   # suggestions.
   documentation.man.generateCaches = true;
 
+  # Temporary fix:
+  # https://github.com/NixOS/nixpkgs/issues/499166#issuecomment-4124861759
+  documentation.doc.enable = false;
+
   # Enable bluetooth
   hardware.bluetooth.enable = true;
 
