@@ -42,86 +42,84 @@
       isd = isd.packages.${system};
     };
     gurd-python = import ./lib/python/python.nix {inherit pkgs;};
-  in
-    {
-      nixosConfigurations = {
-        "gurd-personal" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = specialArgs;
-          modules = [
-            ./gurd-personal/configuration.nix
-            ./gurd-personal/hardware-configuration.nix
-            nixos-hardware.nixosModules.lenovo-thinkpad-t480s
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.gurd = import ./gurd-personal/home.nix;
-              home-manager.backupFileExtension = "backup";
-              # To pass inputs on to home.nix
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-            waveforms.nixosModule
-          ];
-        };
-
-        "gurd-server" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = specialArgs;
-          modules = [
-            ./gurd-server/configuration.nix
-            ./gurd-server/hardware-configuration.nix
-          ];
-        };
+  in {
+    nixosConfigurations = {
+      "gurd-personal" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = specialArgs;
+        modules = [
+          ./gurd-personal/configuration.nix
+          ./gurd-personal/hardware-configuration.nix
+          nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.gurd = import ./gurd-personal/home.nix;
+            home-manager.backupFileExtension = "backup";
+            # To pass inputs on to home.nix
+            home-manager.extraSpecialArgs = specialArgs;
+          }
+          waveforms.nixosModule
+        ];
       };
 
-      # For gurd-server
-      homeConfigurations = {
-        "gurd" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [gurd-server/home.nix];
-          extraSpecialArgs = specialArgs;
-        };
-        "sson" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [sson/home.nix];
-          extraSpecialArgs = specialArgs;
-        };
+      "gurd-server" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = specialArgs;
+        modules = [
+          ./gurd-server/configuration.nix
+          ./gurd-server/hardware-configuration.nix
+        ];
       };
-
-      nixosModules.${system}.gurd-battery-warning = gurd-python.nixosModules.${system}.gurd-battery-warning;
-
-
-      devShells.x86_64-linux.bls-services = pkgs.mkShell {
-        packages = [pkgs.gnumake pkgs.python312];
-        # `glib`,`pango` and `fontconfig` is needed for weasyprint
-        LD_LIBRARY_PATH = let
-          libs = [pkgs.glib.dev.out pkgs.pango.out pkgs.fontconfig.lib];
-          strlibs = pkgs.lib.strings.join "/lib/:";
-          in strlibs + "$LD_LIBRARY_PATH";
-      };
-
-      devShells.x86_64-linux.bmf = pkgs.mkShell {
-        packages = [pkgs.gnumake pkgs.python312 pkgs.uv];
-        # `icu`    is needed for spire-xls
-        # `cc` is needed for numpy
-        # `glib`,`pango` and `fontconfig` is needed for weasyprint
-        shellHook = let
-          libs = [pkgs.stdenv.cc.cc.lib pkgs.icu pkgs.glib.dev.out pkgs.pango.out pkgs.fontconfig.lib pkgs.libz ""];
-          strlibs = pkgs.lib.strings.join "/lib/:" libs;
-          in ''
-             export LD_LIBRARY_PATH="${strlibs}""$LD_LIBRARY_PATH";
-          '';
-      };
-
-
-      devShells.x86_64-linux.gurd-python = gurd-python.devShells;
-
-      # Just need something to be the default
-      devShells.x86_64-linux.default = gurd-python.devShells.x86_64-linux.default;
-
-      packages.${system} = gurd-python.packages.${system};
-      # I don't know what that was supposed to do, but it breaks now
-      # defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     };
+
+    # For gurd-server
+    homeConfigurations = {
+      "gurd" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [gurd-server/home.nix];
+        extraSpecialArgs = specialArgs;
+      };
+      "sson" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [sson/home.nix];
+        extraSpecialArgs = specialArgs;
+      };
+    };
+
+    nixosModules.${system}.gurd-battery-warning = gurd-python.nixosModules.${system}.gurd-battery-warning;
+
+    devShells.x86_64-linux.bls-services = pkgs.mkShell {
+      packages = [pkgs.gnumake pkgs.python312];
+      # `glib`,`pango` and `fontconfig` is needed for weasyprint
+      LD_LIBRARY_PATH = let
+        libs = [pkgs.glib.dev.out pkgs.pango.out pkgs.fontconfig.lib];
+        strlibs = pkgs.lib.strings.join "/lib/:";
+      in
+        strlibs + "$LD_LIBRARY_PATH";
+    };
+
+    devShells.x86_64-linux.bmf = pkgs.mkShell {
+      packages = [pkgs.gnumake pkgs.python312 pkgs.uv];
+      # `icu`    is needed for spire-xls
+      # `cc` is needed for numpy
+      # `glib`,`pango` and `fontconfig` is needed for weasyprint
+      shellHook = let
+        libs = [pkgs.stdenv.cc.cc.lib pkgs.icu pkgs.glib.dev.out pkgs.pango.out pkgs.fontconfig.lib pkgs.libz ""];
+        strlibs = pkgs.lib.strings.join "/lib/:" libs;
+      in ''
+        export LD_LIBRARY_PATH="${strlibs}""$LD_LIBRARY_PATH";
+      '';
+    };
+
+    devShells.x86_64-linux.gurd-python = gurd-python.devShells;
+
+    # Just need something to be the default
+    devShells.x86_64-linux.default = gurd-python.devShells.x86_64-linux.default;
+
+    packages.${system} = gurd-python.packages.${system};
+    # I don't know what that was supposed to do, but it breaks now
+    # defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+  };
 }
