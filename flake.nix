@@ -117,7 +117,11 @@
 
       devShells.x86_64-linux.gurd-python = gurd-python.devShells;
 
+      # Just need something to be the default
+      devShells.x86_64-linux.default = gurd-python.devShells.x86_64-linux.default;
+
       packages.${system} = gurd-python.packages.${system};
-      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+      # I don't know what that was supposed to do, but it breaks now
+      # defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     };
 }
