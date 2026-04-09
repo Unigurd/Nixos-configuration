@@ -33,7 +33,8 @@ pkgs: let
         undo-fu-session
         # various
         skewer-mode
-        poly-R
+        # Commented cause failed to build
+        # poly-R
         flycheck
         gcmh
         auctex
