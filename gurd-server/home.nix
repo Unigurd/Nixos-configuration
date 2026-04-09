@@ -22,6 +22,8 @@
   programs.git = {
     enable = true;
     userEmail = "sson@baselifescience.com";
+    # Just to silence a warning.
+    signing.format = "openpgp";
   };
 
   home.packages = with pkgs; [

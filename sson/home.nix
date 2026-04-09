@@ -5,7 +5,7 @@
   isd,
   ...
 }: {
-  imports = [(import ../lib/emacs.nix pkgs).module  ../lib/firefox.nix];
+  imports = [(import ../lib/emacs.nix pkgs).module ../lib/firefox.nix];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "sson";
@@ -21,6 +21,8 @@
   programs.git = {
     enable = true;
     settings.user.email = "sson@baselifescience.com";
+    # Just to silence a warning.
+    signing.format = "openpgp";
   };
 
   programs.bash = {

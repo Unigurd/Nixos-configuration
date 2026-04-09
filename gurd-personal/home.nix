@@ -24,6 +24,8 @@
   programs.git = {
     enable = true;
     settings.user.email = "Sigurddam@hotmail.com";
+    # Just to silence a warning.
+    signing.format = "openpgp";
   };
 
   programs.direnv = {
