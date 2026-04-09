@@ -42,6 +42,7 @@
   # services.gpg-agent.enable = true;
 
   home.packages = with pkgs; [
+    sbcl
     # pinentry
     vscode
     evince
