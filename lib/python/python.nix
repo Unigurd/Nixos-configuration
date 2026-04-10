@@ -1,6 +1,6 @@
 {
   pkgs,
-  xrandr ? pkgs.xorg.xrandr,
+  xrandr ? pkgs.xrandr,
   ...
 }: let
   system = "x86_64-linux";
