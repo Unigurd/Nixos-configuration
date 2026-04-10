@@ -70,7 +70,7 @@
   documentation.dev.enable = true;
   # Generate mandb cache. Emacs needs this for the `man` command to generate
   # suggestions.
-  documentation.man.generateCaches = true;
+  documentation.man.cache.enable = true;
 
   # Temporary fix:
   # https://github.com/NixOS/nixpkgs/issues/499166#issuecomment-4124861759
