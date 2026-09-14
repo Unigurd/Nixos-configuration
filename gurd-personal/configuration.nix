@@ -81,8 +81,10 @@
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default
   networking.extraHosts = "192.168.0.165 gurd-server";
 
-  # Docker
-  virtualisation.docker.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   # Time zone
   time.timeZone = "Europe/Copenhagen";
