@@ -44,9 +44,7 @@
   # services.gpg-agent.enable = true;
 
   home.packages = with pkgs; [
-    sbcl
     # pinentry
-    vscode
     evince
     inputs.bash-utils.packages."${pkgs.stdenv.hostPlatform.system}".label
     inputs.bash-utils.packages."${pkgs.stdenv.hostPlatform.system}".note
@@ -58,6 +56,8 @@
     entr
     (import ../lib/filewatch.nix pkgs)
     scrot
+    # prismlauncher
+    # minecraft-server
   ];
 
   gurd.git-sync.keepassxc = {

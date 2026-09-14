@@ -60,7 +60,6 @@
             # To pass inputs on to home.nix
             home-manager.extraSpecialArgs = specialArgs;
           }
-          waveforms.nixosModule
         ];
       };
 

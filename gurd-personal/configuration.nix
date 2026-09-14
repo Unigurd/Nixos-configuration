@@ -31,25 +31,19 @@
     xclip # xclip is needed for keepassxc-cli to be able to copy to clipboard
     man-pages
     man-pages-posix
-    (python312Packages.python-lsp-server.overridePythonAttrs
-      (old: {
-        dependencies = old.dependencies ++ old.optional-dependencies.rope;
-      }))
-    python312Packages.ruff
     htop
     (python312.withPackages (ps: [
       # Needed for the eduroam setup script
       ps.dbus-python
       # Needed for jupyter notebooks in vs code for mekrel
-      ps.jupyter
-      ps.notebook
-      ps.ipykernel
-      ps.pip
-      ps.numpy
-      ps.matplotlib
-      ps.scikit-learn
+      # ps.jupyter
+      # ps.notebook
+      # ps.ipykernel
+      # ps.pip
+      # ps.numpy
+      # ps.matplotlib
+      # ps.scikit-learn
     ]))
-    isd.default
     self.packages.x86_64-linux.gurd-python
   ];
 
@@ -61,8 +55,6 @@
     IdleAction = "ignore";
     IdleActionSec = 0;
   };
-
-  programs.steam.enable = true;
 
   environment.wordlist.enable = true;
 
