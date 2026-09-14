@@ -1,5 +1,5 @@
 pkgs: let
-  package = (pkgs.emacsPackagesFor pkgs.emacs30).emacsWithPackages (
+  package = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
     epkgs:
       with epkgs; [
         # ace
