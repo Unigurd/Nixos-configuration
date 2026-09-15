@@ -1,5 +1,5 @@
 pkgs: let
-  package = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
+  package = (pkgs.emacsPackagesFor pkgs.emacs31).emacsWithPackages (
     epkgs:
       with epkgs; [
         # ace
@@ -62,7 +62,6 @@ pkgs: let
         # tree-sitter
         treesit-grammars.with-all-grammars
         treesit-auto
-        markdown-ts-mode
         # inspector
         inspector
         tree-inspector
