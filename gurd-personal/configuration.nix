@@ -35,14 +35,6 @@
     (python312.withPackages (ps: [
       # Needed for the eduroam setup script
       ps.dbus-python
-      # Needed for jupyter notebooks in vs code for mekrel
-      # ps.jupyter
-      # ps.notebook
-      # ps.ipykernel
-      # ps.pip
-      # ps.numpy
-      # ps.matplotlib
-      # ps.scikit-learn
     ]))
     self.packages.x86_64-linux.gurd-python
   ];
